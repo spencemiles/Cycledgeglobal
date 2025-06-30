@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenyan Cycling Pros - Professional Bike Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        header * {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(44, 62, 80, 0.9);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(44, 62, 80, 1);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .program-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .program-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        #certifications .section-title h2 {
+            color: white;
+        }
+
+        #certifications .section-title p {
+            color: #bdc3c7;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .cert-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .cert-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .team-member .role {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dark);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Success Stories */
+        #success {
+            background-color: #f9f9f9;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .story-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .story-card:hover .story-image img {
+            transform: scale(1.1);
+        }
+
+        .story-content {
+            padding: 30px;
+        }
+
+        .story-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .story-content .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .story-content .name {
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Kenyan<span>Cycling</span>Pros</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#success">Success Stories</a></li>
+                <li><a href="#why-us">Why Choose Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1>Professional Bike Training in Kenya</h1>
+        <p>From beginners to pro riders, we offer comprehensive cycling training programs tailored for all skill levels. Start your cycling journey today with certified instructors.</p>
+        <a href="#programs" class="btn">View Our Programs</a>
+    </header>
+
+    <!-- Programs Section -->
+    <section class="section" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Training Programs</h2>
+                <p>Quality bike training at affordable prices. Each session lasts 3 hours with personalized attention.</p>
+            </div>
+            <div class="programs-grid">
+                <!-- Kids Program -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1530046339917-1e0d6edb0d79?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Kids Bike Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Kids Bike Training</h3>
+                        <p>Perfect for children aged 5-12. We teach balance, safety, and basic riding skills in a fun, supportive environment.</p>
+                        <div class="price">KSH 500/session</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Kids%20Bike%20Training%20Program%20(KSH%20500)" class="btn">Enroll via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Teenagers Program -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1530046339917-1e0d6edb0d79?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Teen Bike Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Teen Bike Training</h3>
+                        <p>For ages 13-19. Develop proper techniques, road safety, and build confidence on various terrains.</p>
+                        <div class="price">KSH 1,000/session</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Teen%20Bike%20Training%20Program%20(KSH%201000)" class="btn">Enroll via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Adults Beginner -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Adult Beginner Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Adult Beginner</h3>
+                        <p>Never ridden before? We'll have you comfortable on a bike in no time with our patient, experienced instructors.</p>
+                        <div class="price">KSH 1,500/session</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Adult%20Beginner%20Program%20(KSH%201500)" class="btn">Enroll via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Adults Intermediate -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://www.cyclinguk.org/sites/default/files/styles/xxs_cuk_16_9_hero_max_575_98px/public/roofowler_rz95160_0.jpg?h=8c1344d8&itok=yu5xBFI7" alt="Adult Intermediate Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Adult Intermediate</h3>
+                        <p>For riders who know basics but want to improve technique, endurance, and tackle more challenging routes.</p>
+                        <div class="price">KSH 3,000/session</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Adult%20Intermediate%20Program%20(KSH%203000)" class="btn">Enroll via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Adults Pro -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Adult Pro Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Adult Pro Training</h3>
+                        <p>Advanced techniques, race preparation, and performance optimization for competitive cyclists.</p>
+                        <div class="price">KSH 5,500/session</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Adult%20Pro%20Training%20Program%20(KSH%205500)" class="btn">Enroll via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Group Sessions -->
+                <div class="program-card animate-on-scroll">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Group Training">
+                    </div>
+                    <div class="program-content">
+                        <h3>Group Training</h3>
+                        <p>Bring your friends or family for discounted group sessions. Perfect for teams, schools, or corporate groups.</p>
+                        <div class="price">Custom Pricing</div>
+                        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20Group%20Training%20Sessions" class="btn">Inquire via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section" id="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Certifications</h2>
+                <p>We are fully certified and accredited bike trainers with extensive experience in cycling education.</p>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-award"></i>
+                    <h3>Certified Cycling Coaches</h3>
+                    <p>Internationally recognized coaching certifications from the UCI (Union Cycliste Internationale).</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety Certified</h3>
+                    <p>Certified in first aid, CPR, and bike safety instruction by the Kenya Red Cross and Cycling Kenya.</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Youth Specialist</h3>
+                    <p>Specialized training in child development and youth cycling instruction from the International Cycling Union.</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-medal"></i>
+                    <h3>Competitive Experience</h3>
+                    <p>Our trainers have competed at national and international levels, bringing real-world expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>Passionate cyclists dedicated to sharing our knowledge and love for the sport.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member animate-on-scroll">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Philemon Mutisya">
+                    </div>
+                    <h3>Philemon Mutisya</h3>
+                    <div class="role">Head Coach & Founder</div>
+                    <p>With over 15 years of competitive cycling experience and 8 years coaching, Philemon has trained hundreds of riders from beginners to national champions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Raymond Tom">
+                    </div>
+                    <h3>Raymond Tom</h3>
+                    <div class="role">Senior Coach & Technical Director</div>
+                    <p>Raymond specializes in bike mechanics and performance training. His technical expertise helps riders optimize their equipment and technique.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mission animate-on-scroll" style="margin-top: 60px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Our Mission</h3>
+                <p style="font-size: 1.1rem;">"We believe cycling is more than just a sport - it's a lifestyle that promotes health, independence, and environmental sustainability. Our goal is to make cycling accessible and enjoyable for all Kenyans, while developing world-class competitive riders who can represent our country on the global stage."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="section" id="success">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from some of our students who have transformed their cycling skills with our training.</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card animate-on-scroll">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Student Success">
+                    </div>
+                    <div class="story-content">
+                        <h3>From Zero to Hero</h3>
+                        <p class="quote">"I never thought I'd be able to ride a bike at 35 years old. Philemon's patience and methodical approach had me riding confidently within just 3 sessions!"</p>
+                        <p class="name">- Susan M., Adult Beginner Student</p>
+                    </div>
+                </div>
+                <div class="story-card animate-on-scroll">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Student Success">
+                    </div>
+                    <div class="story-content">
+                        <h3>National Champion</h3>
+                        <p class="quote">"Raymond's technical training took my racing to the next level. I went from local races to winning the Kenyan National Championships in just 2 years."</p>
+                        <p class="name">- David K., Elite Rider</p>
+                    </div>
+                </div>
+                <div class="story-card animate-on-scroll">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Student Success">
+                    </div>
+                    <div class="story-content">
+                        <h3>Confident Kids</h3>
+                        <p class="quote">"My 8-year-old was terrified of bikes. After the kids program, she's now the one leading our family rides! The instructors made it so fun she didn't even realize she was learning."</p>
+                        <p class="name">- James W., Parent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Kenyan Cycling Pros?</h2>
+                <p>What sets us apart from other bike trainers in Kenya</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Proven Results</h3>
+                    <p>Our training methods have produced national champions and transformed hundreds of beginners into confident cyclists.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Personalized Approach</h3>
+                    <p>We tailor each session to your individual needs, goals, and learning style - no generic "one-size-fits-all" training.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety First</h3>
+                    <p>Our certified instructors prioritize safety while making learning fun and effective.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-bicycle"></i>
+                    <h3>Equipment Provided</h3>
+                    <p>Don't have a bike? We provide quality training bikes and safety gear for all sessions.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Varied Locations</h3>
+                    <p>We train in multiple locations across Nairobi to suit your convenience.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Passionate Instructors</h3>
+                    <p>We don't just teach cycling - we live and breathe it, and that passion shows in every lesson.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Start Your Cycling Journey?</h2>
+                <p>Contact us today to book your first session or ask any questions</p>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20your%20bike%20training%20programs" class="btn" style="margin: 10px;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                <a href="tel:+254790617211" class="btn" style="margin: 10px;"><i class="fas fa-phone"></i> Call Us</a>
+                <a href="mailto:info@kenyancyclingpros.com" class="btn" style="margin: 10px;"><i class="fas fa-envelope"></i> Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kenyan Cycling Pros</h3>
+                    <p>Professional bike training for all ages and skill levels in Nairobi, Kenya.</p>
+                    <p>Building confident cyclists since 2015.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#success">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +254 790 617 211</p>
+                    <p><i class="fas fa-envelope"></i> info@kenyancyclingpros.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Multiple locations across Nairobi</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kenyan Cycling Pros. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Sticky Navigation
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
