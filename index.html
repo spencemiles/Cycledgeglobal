@@ -1186,97 +1186,37 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Amazon product ads data
-            const ads = [
-                {
-                    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/c1c160b8-2d13-43a6-8432-7a48dd3816ba.__CR0,0,1464,600_PT0_SX1464_V1___.jpg",
-                    title: "Bike Lights Set 1500LM USB Rechargeable Bicycle Headlight & Tail Light Waterproof 5 Lighting Modes Fits Bicycles for Road and Mountain",
-                    price: "$37",
-                    link: "https://amzn.to/4njTmnf"
-                },
-                {
-                    image: "https://image.kilimall.com/kenya/shop/store/goods/7309/2022/04/1650385691103e92574f9666d4feabef1b5c9c68263d7.png",
-                    title: "Best price for SD576C Wireless Bicycle Computer Bike Speedometer Odometer with LCD Backlight",
-                    price: "ksh.12,800",
-                    link: "http://k.kili.co/1y9g5"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/8985c08d-2d73-48e0-9aec-5eef57c06597.__CR0,0,1464,600_PT0_SX1464_V1___.jpg",
-                    title: "Bike Helmet, Smart App Program Bike Helmet with USB Rechargeable Light, Back Light Mountain for Adult&Men Women, with Turn Signals Remote Control",
-                    price: "$55",
-                    link: "https://amzn.to/4lqW2xt"
-                },
-                {
-                    image: "https://www.ridemedia.com.au/wp-content/uploads/2024/03/GoPro-Experiment-02-1.jpg",
-                    title: "Kindle Paperwhite (8 GB) – Now with a 6.8\" display and adjustable warm light",
-                    price: "ksh.",
-                    link: "https://www.amazon.com/dp/B08N38JQ7W"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71Y1S1m-QAL._AC_UL320_.jpg",
-                    title: "Apple AirTag 4 Pack",
-                    price: "$99.00",
-                    link: "https://www.amazon.com/dp/B0932QJ2JZ"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71WkDp--uqL._AC_UL320_.jpg",
-                    title: "PlayStation 5 Console (PS5)",
-                    price: "$499.99",
-                    link: "https://www.amazon.com/dp/B08FC5L3RG"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/61L1ItFgFHL._AC_UL320_.jpg",
-                    title: "Apple 20W USB-C Power Adapter",
-                    price: "$19.00",
-                    link: "https://www.amazon.com/dp/B08L8KR4P6"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71mEsHyzSCL._AC_UL320_.jpg",
-                    title: "Logitech MX Master 3 Advanced Wireless Mouse",
-                    price: "$99.99",
-                    link: "https://www.amazon.com/dp/B07XC2FWD1"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/61XDeaOrrYL._AC_UL320_.jpg",
-                    title: "Apple Watch Series 9 [GPS 41mm] Smartwatch with Storm Blue Aluminum Case",
-                    price: "$399.00",
-                    link: "https://www.amazon.com/dp/B0CHWZ6B8K"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71z7dcuwu6L._AC_UL320_.jpg",
-                    title: "Sony WH-1000XM5 Wireless Industry Leading Headphones with Auto Noise Canceling Optimizer",
-                    price: "$398.00",
-                    link: "https://www.amazon.com/dp/B09XS7JWHH"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
-                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
-                    price: "$429.00",
-                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71S8qt+K8hL._AC_UL320_.jpg",
-                    title: "Samsung Galaxy Tab A9+ 11\" 64GB Android Tablet, Big Screen, Quad Speakers",
-                    price: "$219.99",
-                    link: "https://www.amazon.com/dp/B0CKTRG7K5"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
-                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
-                    price: "$429.00",
-                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71HunpGZWTL._AC_UL320_.jpg",
-                    title: "Ninja AF101 Air Fryer that Crisps, Roasts, Reheats, & Dehydrates",
-                    price: "$99.95",
-                    link: "https://www.amazon.com/dp/B07FDJMC6Q"
-                },
-                {
-                    image: "https://m.media-amazon.com/images/I/71OZY035QVL._AC_UL320_.jpg",
-                    title: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
-                    price: "$429.00",
-                    link: "https://www.amazon.com/dp/B0C8LLD4TM"
-                }
+                       const ads = [
+    {
+        image: "https://m.media-amazon.com/images/I/71m22UF7WxL._UF1000,1000_QL80_.jpg",
+        title: "Bike Helmet - Adult Cycling Helmet with Adjustable Fit",
+        description: "Lightweight, aerodynamic helmet with 22 vents for maximum airflow and safety certification",
+        price: "KSH 7,200",
+        link: "https://amzn.to/4njTmnf"
+    },
+    {
+        image: "https://images-na.ssl-images-amazon.com/images/I/417K0Au8yIL.jpg",
+        title: "Cycling Jersey - Breathable Quick-Dry Bike Shirt",
+        description: "Performance jersey with 3 back pockets, moisture-wicking fabric, and UV protection",
+        price: "KSH 1,500",
+        link: "https://amzn.to/4njTmnf"
+    },
+    {
+        image: "https://cdn11.bigcommerce.com/s-cmcj94sbu5/images/stencil/800x800/products/5521/23932/Mens_3DGel_Cycling_BibShorts_Features_Front__92841.1647010846.jpg?c=2",
+        title: "Cycling Shorts with Padding - Bike Bib Shorts",
+        description: "Professional cycling shorts with 6-panel ergonomic design and chamois padding",
+        price: "KSH 1,800",
+        link: "https://amzn.to/4njTmnf"
+    },
+    {
+        image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/46/9631861/1.jpg?7336",
+        title: "Cycling Gloves - Padded Bike Gloves",
+        description: "Half-finger gloves with gel padding, breathable mesh and anti-slip palm",
+        price: "KSH 1,000",
+        link: "https://amzn.to/4njTmnf"
+    },
+   
+];
             ];
 
             // Possible positions for the ads
