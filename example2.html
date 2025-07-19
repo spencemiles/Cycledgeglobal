@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cycledge Cyber Panel – Newsletter & Marketing Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00ffcc;
+    }
+    header h1 {
+      color: #00ffcc;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    button {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    #status {
+      margin-top: 15px;
+      background: #222;
+      padding: 10px;
+      border-left: 5px solid #00ffcc;
+      border-radius: 5px;
+      white-space: pre-line;
+    }
+    @media(max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📡 Cycledge Cyber Panel</h1>
+    <p>Send newsletters, promotions, banners, and more to your subscribers</p>
+  </header>
+  <div class="container">
+    <h2>📝 Compose Broadcast</h2>
+    <input type="text" id="subject" placeholder="Subject line e.g. 🚴 Big Weekend Discount!">
+    <textarea id="message" placeholder="Your message (HTML allowed, e.g. <b>bold</b>, <img>, <a>)"></textarea>
+    <button id="sendBtn">📤 Send Broadcast</button>
+    <div id="status">Status: Waiting to send...</div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZUWKTUa1VLR4lrtMsDUx28Ru6GFF8u5A",
+      authDomain: "cyledgeglobal.firebaseapp.com",
+      projectId: "cyledgeglobal",
+      storageBucket: "cyledgeglobal.firebasestorage.app",
+      messagingSenderId: "895524227881",
+      appId: "1:895524227881:web:f4c33b0701e77d864c0538"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.sendNewsletter = async function () {
+      const statusBox = document.getElementById("status");
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!subject || !message) {
+        statusBox.textContent = "❌ Subject and message are required.";
+        return;
+      }
+
+      // ✅ TEMP TEST
+      statusBox.textContent = "🚀 Sending test email to yourname@gmail.com...";
+      try {
+        await emailjs.send("service_x0bq6vp", "template_oymp5bz", {
+          email: "spencemiles0@gmail.com",
+          subject: subject,
+          message: message
+        });
+        statusBox.textContent += "\n✅ Test email sent successfully!";
+      } catch (err) {
+        console.error("Test send failed:", err);
+        statusBox.textContent += `\n❌ Test failed: ${err?.text || err?.message || JSON.stringify(err)}`;
+        return;
+      }
+
+      statusBox.textContent += "\n⏳ Collecting subscriber emails...";
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "cycledge_subscribers"));
+        const emails = [];
+        querySnapshot.forEach(doc => {
+          const data = doc.data();
+          if (data.email) emails.push(data.email);
+        });
+
+        if (emails.length === 0) {
+          statusBox.textContent = "❌ No subscriber emails found.";
+          return;
+        }
+
+        let sentCount = 0;
+        for (const [index, email] of emails.entries()) {
+          statusBox.textContent = `📤 Sending to ${email} (${index + 1}/${emails.length})...`;
+          try {
+            await emailjs.send("service_x0bq6vp", "template_oymp5bz", {
+              email: email,
+              subject: subject,
+              message: message
+            });
+            sentCount++;
+            statusBox.textContent += `\n✅ Sent to: ${email}`;
+          } catch (err) {
+            console.error("Send failed:", err);
+            statusBox.textContent += `\n❌ Failed to send to ${email}: ${err?.text || err?.message || JSON.stringify(err)}`;
+          }
+        }
+
+        statusBox.textContent += `\n\n✅ All done. Sent to ${sentCount} subscribers.`;
+      } catch (err) {
+        console.error("Bulk send error:", err);
+        statusBox.textContent = `❌ Failed to send: ${err?.text || err?.message || JSON.stringify(err)}`;
+      }
+    };
+  </script>
+
+  <!-- EmailJS Script Tag -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+
+  <!-- Button listener -->
+  <script>
+    emailjs.init("YFehbefVzRblDCrEE");
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      if (window.sendNewsletter) {
+        window.sendNewsletter();
+      } else {
+        alert("Newsletter function not loaded. Please check script errors.");
+      }
+    });
+  </script>
+
+</body>
+</html>

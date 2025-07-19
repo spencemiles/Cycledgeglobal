@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling Nutrition: What to Eat Before, During & After Rides | CycleEdge</title>
+    <meta name="description" content="Fuel your rides optimally with this complete guide to cycling nutrition, including meal plans and hydration strategies.">
+    <meta name="keywords" content="cycling nutrition, cycling diet, what to eat before cycling, cycling hydration, post-ride recovery">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .article-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #e67e22;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Article Content */
+        .article-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .article-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .article-content h2 {
+            color: var(--dark);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .article-content h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+        
+        .article-content ul, .article-content ol {
+            margin: 1.2rem 0 1.2rem 2rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .nutrition-plan {
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e6f7ed;
+        }
+        
+        .nutrition-tip {
+            background-color: rgba(230, 126, 34, 0.1);
+            border-left: 4px solid #e67e22;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .nutrition-tip h4 {
+            color: #e67e22;
+            margin-bottom: 0.8rem;
+        }
+        
+        .hydration-box {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .hydration-box h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .article-image {
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .article-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .sidebar-widget h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .related-articles {
+            list-style: none;
+        }
+        
+        .related-articles li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .related-articles li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .related-articles a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .related-articles a:hover {
+            color: var(--primary);
+        }
+        
+        .related-articles a i {
+            margin-right: 8px;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-share a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .social-share a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook { background: #3b5998; }
+        .twitter { background: #1da1f2; }
+        .linkedin { background: #0077b5; }
+        .pinterest { background: #e60023; }
+        
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 3rem 0;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .author-social a {
+            color: var(--text-light);
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+        
+        .author-social a:hover {
+            color: var(--primary);
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        .comments-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .comment-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        /* Form Success Message */
+        .form-success {
+            display: none;
+            background-color: rgba(46, 204, 113, 0.2);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            color: var(--dark);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .article-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-sidebar {
+                margin-top: 3rem;
+                position: static;
+            }
+            
+            .article-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .article-header {
+                height: 50vh;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .article-content {
+                padding: 1.5rem;
+            }
+            
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-avatar {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .article-header {
+                height: 40vh;
+            }
+            
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple WhatsApp Chat Link -->
+<div class="whatsapp-chat">
+  <a href="https://wa.me/254790617211" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- Font Awesome for WhatsApp icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  .whatsapp-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+  }
+  
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+  }
+  
+  /* Optional: Add a tooltip */
+  .whatsapp-btn::after {
+    content: "Chat with us on WhatsApp";
+    position: absolute;
+    right: 70px;
+    width: max-content;
+    padding: 8px 12px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+  }
+</style>
+    <!-- Header would be included from your main template -->
+    <header id="header">
+        <!-- Your header content here -->
+    </header>
+
+    <!-- Article Header -->
+    <div class="article-header">
+        <div class="article-header-content">
+            <span class="category-tag">Nutrition</span>
+            <h1>Cycling Nutrition: What to Eat Before, During & After Rides</h1>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>By Philemon Mutisya</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>May 10, 2023</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="article-container">
+            <!-- Main Article Content -->
+            <main class="article-content">
+                <p>Proper nutrition is the secret weapon of successful cyclists. What you eat before, during, and after rides significantly impacts your performance, recovery, and overall cycling experience. This comprehensive guide breaks down optimal cycling nutrition strategies for all types of rides.</p>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Healthy foods for cyclists">
+                    <p class="image-caption">A balanced mix of carbohydrates, proteins, and fats fuels optimal cycling performance</p>
+                </div>
+                
+                <h2>Pre-Ride Nutrition: Fueling Up</h2>
+                <p>What you eat before cycling sets the stage for your ride. The ideal pre-ride meal depends on timing and ride duration:</p>
+                
+                <div class="nutrition-plan">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time Before Ride</th>
+                                <th>Meal Type</th>
+                                <th>Examples</th>
+                                <th>Calories</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3-4 hours</td>
+                                <td>Full meal</td>
+                                <td>Oatmeal + banana + peanut butter + eggs</td>
+                                <td>500-800 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>1-2 hours</td>
+                                <td>Smaller meal</td>
+                                <td>Toast + honey + yogurt + almonds</td>
+                                <td>300-500 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>30-60 minutes</td>
+                                <td>Light snack</td>
+                                <td>Energy bar, banana, or sports drink</td>
+                                <td>100-300 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>During warm-up</td>
+                                <td>Quick carbs</td>
+                                <td>Energy gel, dates, or sports drink</td>
+                                <td>50-100 kcal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="nutrition-tip">
+                    <h4>Pre-Ride Nutrition Tips</h4>
+                    <ul>
+                        <li><strong>Focus on carbohydrates:</strong> They're your primary fuel source during exercise</li>
+                        <li><strong>Moderate protein:</strong> Helps sustain energy but takes longer to digest</li>
+                        <li><strong>Limit fats and fiber:</strong> Can cause digestive issues during intense efforts</li>
+                        <li><strong>Practice your nutrition:</strong> Test different foods during training, not race day</li>
+                        <li><strong>Hydrate well:</strong> Drink 500ml water 2-3 hours before riding</li>
+                    </ul>
+                </div>
+                
+                <h3>Sample Pre-Ride Meals</h3>
+                <p><strong>Early Morning Rides:</strong> If you can't eat 3-4 hours before, try:</p>
+                <ul>
+                    <li>Banana with almond butter (30-60 min before)</li>
+                    <li>Overnight oats (eat half before bed, half when waking)</li>
+                    <li>Liquid nutrition like a smoothie (easier to digest)</li>
+                </ul>
+                
+                <p><strong>Afternoon/Evening Rides:</strong> Take advantage of regular meals:</p>
+                <ul>
+                    <li>Breakfast: Whole grain toast + eggs + avocado (for late morning rides)</li>
+                    <li>Lunch: Rice + grilled chicken + steamed veggies (for afternoon rides)</li>
+                </ul>
+                
+                <h2>During-Ride Nutrition: Maintaining Energy</h2>
+                <p>Fueling during rides becomes crucial for sessions lasting longer than 60-90 minutes. Follow these guidelines:</p>
+                
+                <div class="nutrition-plan">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ride Duration</th>
+                                <th>Calories Needed</th>
+                                <th>Carbohydrates</th>
+                                <th>Food Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><60 minutes</td>
+                                <td>Water only</td>
+                                <td>Not needed</td>
+                                <td>Plain water</td>
+                            </tr>
+                            <tr>
+                                <td>1-2 hours</td>
+                                <td>150-300 kcal/hr</td>
+                                <td>30-60g/hr</td>
+                                <td>Banana, energy bar, sports drink</td>
+                            </tr>
+                            <tr>
+                                <td>2-3 hours</td>
+                                <td>200-400 kcal/hr</td>
+                                <td>60-90g/hr</td>
+                                <td>Energy gels, dates, sports drink, rice cakes</td>
+                            </tr>
+                            <tr>
+                                <td>3+ hours</td>
+                                <td>300-500 kcal/hr</td>
+                                <td>60-120g/hr</td>
+                                <td>Mix of solids and liquids, including some protein/fat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="hydration-box">
+                    <h4>Hydration Strategies</h4>
+                    <p>Proper hydration is equally important as nutrition:</p>
+                    <ul>
+                        <li><strong>General guideline:</strong> 500-750ml per hour (more in heat)</li>
+                        <li><strong>Electrolytes:</strong> Add to water for rides >1 hour or in hot conditions</li>
+                        <li><strong>Monitor urine color:</strong> Pale yellow indicates good hydration</li>
+                        <li><strong>Pre-hydrate:</strong> Drink 500ml 2-3 hours before riding</li>
+                    </ul>
+                </div>
+                
+                <div class="article-image">
+                    <img src="https://www.bhf.org.uk/-/media/images/get-involved/events/nutrition-for-sporting-events/nutrition-for-sporting-events-hydration-exercise-header-800-600px.jpg?rev=1621bc607af34d9ab6c77480c4cf0a8c&la=en&h=600&w=800&hash=3268E3C352F128DB200DD8FE17FB8652" alt="Cyclist drinking water during ride">
+                    <p class="image-caption">Regular hydration prevents performance drops and fatigue</p>
+                </div>
+                
+                <h3>Advanced Fueling: Carb Mixing</h3>
+                <p>For endurance events (3+ hours), you can absorb more energy by using multiple carbohydrate types:</p>
+                <ul>
+                    <li>Combine glucose and fructose in 2:1 ratio</li>
+                    <li>Allows absorption of up to 90g carbs/hour (vs. 60g with one type)</li>
+                    <li>Example: Sports drink (glucose) + energy gel (fructose)</li>
+                </ul>
+                
+                <h2>Post-Ride Nutrition: Recovery Essentials</h2>
+                <p>The 30-60 minutes after cycling is a critical recovery window. Focus on:</p>
+                
+                <div class="nutrition-plan">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nutrient</th>
+                                <th>Purpose</th>
+                                <th>Amount</th>
+                                <th>Food Sources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carbohydrates</td>
+                                <td>Replenish glycogen stores</td>
+                                <td>1-1.2g/kg body weight</td>
+                                <td>Rice, potatoes, fruits, recovery drinks</td>
+                            </tr>
+                            <tr>
+                                <td>Protein</td>
+                                <td>Muscle repair and growth</td>
+                                <td>20-40g</td>
+                                <td>Whey protein, chicken, eggs, Greek yogurt</td>
+                            </tr>
+                            <tr>
+                                <td>Fluids</td>
+                                <td>Rehydrate</td>
+                                <td>150% of weight lost</td>
+                                <td>Water, electrolyte drinks, milk</td>
+                            </tr>
+                            <tr>
+                                <td>Antioxidants</td>
+                                <td>Reduce inflammation</td>
+                                <td>Varied</td>
+                                <td>Berries, leafy greens, nuts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="nutrition-tip">
+                    <h4>Recovery Meal Timing</h4>
+                    <ul>
+                        <li><strong>Within 30 minutes:</strong> Quick-absorbing carbs + protein (3:1 ratio)</li>
+                        <li><strong>Examples:</strong> Chocolate milk, recovery shake, banana with yogurt</li>
+                        <li><strong>Within 2 hours:</strong> Balanced meal with carbs, protein, and healthy fats</li>
+                        <li><strong>Examples:</strong> Grilled salmon with sweet potato and vegetables</li>
+                    </ul>
+                </div>
+                
+                <h3>Sample Recovery Meals</h3>
+                <p><strong>Quick Options:</strong></p>
+                <ul>
+                    <li>Smoothie: Banana + Greek yogurt + whey protein + almond milk</li>
+                    <li>Toast with peanut butter + honey + glass of milk</li>
+                    <li>Pre-made rice with canned tuna and avocado</li>
+                </ul>
+                
+                <p><strong>Full Meals:</strong></p>
+                <ul>
+                    <li>Grilled chicken with quinoa and roasted vegetables</li>
+                    <li>Pasta with lean beef bolognese and side salad</li>
+                    <li>Stir-fried tofu with brown rice and mixed veggies</li>
+                </ul>
+                
+                <h2>Nutrition for Different Ride Types</h2>
+                <p>Tailor your nutrition approach based on the ride intensity and duration:</p>
+                
+                <h3>Short, Intense Rides (<1 hour)</h3>
+                <ul>
+                    <li>Focus on pre-ride meal</li>
+                    <li>Hydration with water only during ride</li>
+                    <li>Post-ride recovery snack if next session is within 24 hours</li>
+                </ul>
+                
+                <h3>Endurance Rides (2-4 hours)</h3>
+                <ul>
+                    <li>Substantial pre-ride meal 3-4 hours before</li>
+                    <li>30-60g carbs/hour during ride</li>
+                    <li>Electrolyte replacement</li>
+                    <li>Immediate post-ride recovery nutrition</li>
+                </ul>
+                
+                <h3>Century Rides/All-Day Events</h3>
+                <ul>
+                    <li>Practice gut training to handle more food</li>
+                    <li>60-90g carbs/hour from multiple sources</li>
+                    <li>Include some "real food" options (sandwiches, rice cakes)</li>
+                    <li>Manage hydration and electrolytes carefully</li>
+                </ul>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" alt="Cyclist enjoying post-ride meal">
+                    <p class="image-caption">Post-ride meals should be enjoyable while providing essential nutrients</p>
+                </div>
+                
+                <h2>Common Cycling Nutrition Mistakes</h2>
+                <ul>
+                    <li><strong>Underfueling:</strong> Not eating enough before/during long rides</li>
+                    <li><strong>Over-reliance on sports products:</strong> Ignoring real food options</li>
+                    <li><strong>Poor hydration:</strong> Waiting until thirsty to drink</li>
+                    <li><strong>Neglecting recovery:</strong> Skipping post-ride nutrition</li>
+                    <li><strong>Experimenting on event day:</strong> Always test nutrition in training</li>
+                    <li><strong>Ignoring individual needs:</strong> What works for others may not work for you</li>
+                </ul>
+                
+                <div class="hydration-box">
+                    <h4>Special Considerations</h4>
+                    <p><strong>Hot Weather:</strong> Increase fluid/electrolyte intake; consider salty snacks</p>
+                    <p><strong>High Altitude:</strong> May need more carbs and fluids; appetite often decreases</p>
+                    <p><strong>Gravel/MTB:</strong> More bumpy terrain may require easier-to-digest foods</p>
+                </div>
+                
+                <h2>Final Thoughts</h2>
+                <p>Cycling nutrition is highly individual—use these guidelines as starting points, then experiment to find what works best for your body and riding style. Keep a nutrition journal to track what you eat and how you feel during different rides.</p>
+                
+                <p>Remember that consistency with good nutrition habits will yield better long-term results than perfect nutrition on just a few rides. Fuel well, hydrate properly, and enjoy the ride!</p>
+                
+                <!-- Author Box -->
+                <div class="author-box">
+                  
+                    <div class="author-info">
+                        <h4>About the Author</h4>
+                        <p>Mark kenji is a certified sports nutritionist and competitive cyclist with over 7 years of experience helping athletes optimize their performance through proper nutrition. He's the founder of CycleFuel Nutrition Coaching.</p>
+                       
+                    </div>
+                </div>
+                
+                <!-- Comments Section with Functional Form -->
+                <div class="comments-section">
+                    <h3>Have Questions About Cycling Nutrition?</h3>
+                    <p>Submit your questions below and we'll respond within 24 hours!</p>
+                    
+                    <form id="nutritionForm" class="comment-form" action="https://formspree.io/f/philemonmutisya@gmail.com" method="POST">
+                        <div id="formSuccess" class="form-success">
+                            Thank you for your question! We'll get back to you soon.
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Your Question</label>
+                            <textarea id="comment" name="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Question</button>
+                    </form>
+                </div>
+            </main>
+            
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Quick Nutrition Facts</h3>
+                    <p><strong>Carbs:</strong> Primary fuel for cycling, especially high intensity</p>
+                    <p><strong>Protein:</strong> Essential for muscle repair and recovery</p>
+                    <p><strong>Fats:</strong> Important for long, low-intensity rides</p>
+                    <p><strong>Hydration:</strong> Even 2% dehydration can impair performance</p>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Share This Guide</h3>
+                    <div class="social-share">
+                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Related Articles</h3>
+                    <ul class="related-articles">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hydration Strategies for Cyclists</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Best Energy Foods for Long Rides</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Weight Management for Cyclists</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gut Training for Endurance Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Free Nutrition Plan</h3>
+                    <p>Get our customized 7-day cycling nutrition plan based on your riding schedule: for $5 = ksh 645</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" required>
+                        </div>
+                        <button type="submit" class="submit-btn" style="width: 100%;">Get Free Plan</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer would be included from your main template -->
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('nutritionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Send form data using Fetch API
+            fetch('https://formspree.io/f/meokvrpr', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('formSuccess').style.display = 'block';
+                    // Reset form
+                    document.getElementById('nutritionForm').reset();
+                    // Scroll to success message
+                    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                alert('There was a problem submitting your question. Please try again later.');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyledge Global - Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Modern CSS with Variables */
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      color: var(--primary-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--dark);
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    /* Blog Container */
+    .blogs-container {
+      padding: 60px 0;
+    }
+
+    /* Blog Header */
+    .blogs-header {
+      text-align: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    }
+
+    .blogs-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .blogs-header h1::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .blogs-header p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Blog Grid */
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out 0.4s forwards;
+    }
+
+    /* Blog Card */
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Staggered animations for cards */
+    .blog-card:nth-child(1) { animation-delay: 0.4s; }
+    .blog-card:nth-child(2) { animation-delay: 0.5s; }
+    .blog-card:nth-child(3) { animation-delay: 0.6s; }
+    .blog-card:nth-child(4) { animation-delay: 0.7s; }
+    .blog-card:nth-child(5) { animation-delay: 0.8s; }
+    .blog-card:nth-child(6) { animation-delay: 0.9s; }
+
+    .blog-card:hover {
+      transform: translateY(-10px) !important;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .blog-card-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .blog-card-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+      z-index: 1;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .blog-card:hover .blog-card-image::before {
+      opacity: 1;
+    }
+
+    .blog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .blog-card:hover .blog-card-image img {
+      transform: scale(1.1);
+    }
+
+    .blog-card-content {
+      padding: 25px;
+    }
+
+    .blog-date {
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blog-date i {
+      font-size: 0.9rem;
+    }
+
+    .blog-card h3 {
+      margin: 0 0 15px;
+      font-size: 1.4rem;
+      color: var(--dark);
+      transition: var(--transition);
+    }
+
+    .blog-card:hover h3 {
+      color: var(--primary);
+    }
+
+    .blog-excerpt {
+      color: var(--gray);
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .read-more {
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .read-more i {
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+      color: var(--accent);
+    }
+
+    .read-more:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Loading State */
+    .loading-spinner {
+      text-align: center;
+      padding: 60px;
+      grid-column: 1 / -1;
+    }
+
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top: 4px solid var(--primary);
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    .loading-spinner p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Error State */
+    .error-message {
+      text-align: center;
+      padding: 40px;
+      grid-column: 1 / -1;
+      background-color: #fff8f8;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--accent);
+    }
+
+    .error-message i {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: var(--light-gray);
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-section p {
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: var(--light-gray);
+      opacity: 0.8;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-section ul li a:hover {
+      opacity: 1;
+      transform: translateX(5px);
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .blogs-header h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .blogs-header h1 {
+        font-size: 2rem;
+      }
+
+      .blogs-header p {
+        font-size: 1rem;
+      }
+
+      .blog-card {
+        animation-delay: 0s !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blogs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-card-image {
+        height: 180px;
+      }
+
+      .blogs-header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">CyledgeGlobal</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="blogs.html" class="active">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="blogs-container">
+    <div class="blogs-header">
+      <h1>Cyledge Global Blog</h1>
+      <p>Latest insights and updates from our team</p>
+    </div>
+    
+    <div id="blogs-grid" class="blogs-grid">
+      <!-- Blogs will be loaded here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Cyledge Global</h3>
+          <p>Innovative solutions for a digital world.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: info@cyledgeglobal.com</p>
+          <p>Phone: +1 (234) 567-890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Cyledge Global. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { 
+      getFirestore, 
+      collection, 
+      getDocs, 
+      query, 
+      orderBy 
+    } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZUWKTUa1VLR4lrtMsDUx28Ru6GFF8u5A",
+      authDomain: "cyledgeglobal.firebaseapp.com",
+      projectId: "cyledgeglobal",
+      storageBucket: "cyledgeglobal.appspot.com",
+      messagingSenderId: "895524227881",
+      appId: "1:895524227881:web:f4c33b0701e77d864c0538"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const blogsGrid = document.getElementById('blogs-grid');
+      
+      try {
+        // Show loading state
+        blogsGrid.innerHTML = `
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading blogs...</p>
+          </div>
+        `;
+        
+        // Fetch blogs sorted by date (newest first)
+        const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+        
+        if (querySnapshot.empty) {
+          blogsGrid.innerHTML = '<p>No blogs found. Check back later!</p>';
+          return;
+        }
+        
+        // Process and display blogs
+        let html = '';
+        querySnapshot.forEach((doc) => {
+          const blog = doc.data();
+          
+          // Validate required fields
+          if (!blog.title || !blog.hero?.image || !blog.subtitle) {
+            console.warn('Blog missing required fields:', doc.id);
+            return;
+          }
+
+          const date = blog.datePublished 
+            ? new Date(blog.datePublished).toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric',
+                year: 'numeric'
+              })
+            : '';
+          
+          html += `
+            <div class="blog-card" data-id="${doc.id}">
+              <div class="blog-card-image">
+                <img src="${blog.hero.image}" alt="${blog.title}" onerror="this.src='https://via.placeholder.com/400x200?text=Blog+Image'">
+              </div>
+              <div class="blog-card-content">
+                ${date ? `<span class="blog-date"><i class="far fa-calendar-alt"></i> ${date}</span>` : ''}
+                <h3>${blog.title}</h3>
+                <p class="blog-excerpt">${blog.subtitle}</p>
+                <a href="blog.html?id=${doc.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          `;
+        });
+        
+        blogsGrid.innerHTML = html || '<p>No valid blogs found.</p>';
+        
+      } catch (error) {
+        console.error('Error loading blogs:', error);
+        blogsGrid.innerHTML = `
+          <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Error loading blogs. Please try again later.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

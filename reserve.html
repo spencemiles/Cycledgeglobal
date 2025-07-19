@@ -1,0 +1,44 @@
+.hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding-top: 130px; /* Adjusted for sticky header */
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      animation: fadeIn 1.5s ease;
+    }
+    
+    .hero-btns .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+    }
+    
+    .hero-btns .btn-outline:hover {
+      background: white;
+      color: var(--secondary);
+    }
+    

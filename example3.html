@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup Forced Display</title>
+  <!-- Load Firebase only once -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js"></script>
+  
+  <!-- Isolated Popup Styles -->
+  <style id="forced-popup-styles">
+    /* RESET EVERYTHING that might interfere */
+    #email-capture-popup,
+    #email-capture-popup * {
+      all: initial !important;
+      box-sizing: border-box !important;
+      font-family: system-ui, -apple-system, sans-serif !important;
+    }
+    
+    /* POPUP CONTAINER - FORCED DISPLAY */
+    #email-capture-popup {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: rgba(0,0,0,0.9) !important;
+      z-index: 2147483647 !important; /* Maximum possible z-index */
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      overflow: hidden !important;
+      animation: none !important;
+    }
+    
+    /* BACKDROP - Blocks interaction with page */
+    #email-capture-popup::before {
+      content: '' !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      background: rgba(0,0,0,0.9) !important;
+      z-index: 2147483646 !important;
+    }
+    
+    /* POPUP CONTENT */
+    #email-capture-popup .popup-content {
+      position: relative !important;
+      z-index: 2147483647 !important;
+      background: white !important;
+      border-radius: 12px !important;
+      width: 95% !important;
+      max-width: 400px !important;
+      padding: 30px !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+    }
+    
+    /* FORM ELEMENTS */
+    #email-capture-popup input,
+    #email-capture-popup button {
+      width: 100% !important;
+      padding: 12px 15px !important;
+      margin: 10px 0 !important;
+      border: 1px solid #ddd !important;
+      border-radius: 8px !important;
+      font-size: 16px !important;
+      display: block !important;
+    }
+    
+    #email-capture-popup button {
+      background: #1e88e5 !important;
+      color: white !important;
+      border: none !important;
+      cursor: pointer !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- POPUP MARKUP - Minimal and isolated -->
+<div id="email-capture-popup">
+  <div class="popup-content">
+    <h2>🚴 Join Cycledge</h2>
+    <p>Get exclusive cycling offers and tips!</p>
+    
+    <input type="email" id="popup-email" placeholder="Your email address" required>
+    
+    <label>
+      <input type="checkbox" id="popup-consent" required>
+      I agree to receive emails
+    </label>
+    
+    <button id="popup-submit">Subscribe Now</button>
+    
+    <div id="popup-status"></div>
+  </div>
+</div>
+
+<!-- FORCED POPUP SCRIPT - Will execute no matter what -->
+<script>
+  // 1. FIRST THING ON PAGE - Block all other scripts
+  window.stop(); // Stops any other scripts from loading
+  document.addEventListener('DOMContentLoaded', function(e) {
+    e.stopImmediatePropagation();
+  }, true);
+  
+  // 2. OVERRIDE ANY POTENTIAL CSS THAT MIGHT HIDE THE POPUP
+  const style = document.createElement('style');
+  style.textContent = `
+    #email-capture-popup {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    body {
+      overflow: hidden !important;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // 3. FORCE POPUP TO STAY VISIBLE NO MATTER WHAT
+  const forcePopupDisplay = () => {
+    const popup = document.getElementById('email-capture-popup');
+    if (popup) {
+      popup.style.display = 'flex';
+      popup.style.opacity = '1';
+      popup.style.visibility = 'visible';
+    }
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Run continuously to prevent anything from hiding it
+  setInterval(forcePopupDisplay, 100);
+  
+  // 4. FIREBASE INITIALIZATION
+  const firebaseConfig = {
+    apiKey: "AIzaSyBZUWKTUa1VLR4lrtMsDUx28Ru6GFF8u5A",
+    authDomain: "cyledgeglobal.firebaseapp.com",
+    projectId: "cyledgeglobal",
+    storageBucket: "cyledgeglobal.appspot.com",
+    messagingSenderId: "895524227881",
+    appId: "1:895524227881:web:f4c33b0701e77d864c0538"
+  };
+  
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.getFirestore(app);
+  
+  // 5. POPUP FUNCTIONALITY
+  const popup = document.getElementById('email-capture-popup');
+  const emailInput = document.getElementById('popup-email');
+  const consentCheckbox = document.getElementById('popup-consent');
+  const submitButton = document.getElementById('popup-submit');
+  const statusMessage = document.getElementById('popup-status');
+  
+  // Show popup immediately
+  forcePopupDisplay();
+  
+  // Submit handler
+  submitButton.addEventListener('click', async () => {
+    const email = emailInput.value.trim();
+    const consent = consentCheckbox.checked;
+    
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      statusMessage.textContent = 'Please enter a valid email';
+      return;
+    }
+    
+    if (!consent) {
+      statusMessage.textContent = 'Please agree to receive emails';
+      return;
+    }
+    
+    submitButton.disabled = true;
+    statusMessage.textContent = 'Saving...';
+    
+    try {
+      await firebase.setDoc(firebase.doc(db, "cycledge_subscribers", email), {
+        email: email,
+        timestamp: new Date().toISOString(),
+        consentGiven: true,
+        source: "website_popup",
+        status: "active"
+      });
+      
+      statusMessage.textContent = 'Thank you for subscribing!';
+      localStorage.setItem('cycledgeEmail', email);
+      setTimeout(() => popup.style.display = 'none', 1500);
+    } catch (error) {
+      statusMessage.textContent = 'Error saving email. Please try again.';
+      submitButton.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>

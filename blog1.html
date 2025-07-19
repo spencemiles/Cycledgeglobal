@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete 4-Week Beginner Cycling Routine | CycleEdge</title>
+    <meta name="description" content="Start your cycling journey right with this progressive 4-week beginner cycling plan that builds endurance and confidence safely. Perfect for absolute beginners.">
+    <meta name="keywords" content="beginner cycling, cycling routine, cycling for beginners, cycling training plan, starting cycling">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse your existing CSS variables and base styles */
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles - Reuse your existing header styles */
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .article-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Article Content */
+        .article-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .article-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .article-content h2 {
+            color: var(--dark);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .article-content h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+        
+        .article-content ul, .article-content ol {
+            margin: 1.2rem 0 1.2rem 2rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .training-plan {
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e6f7ed;
+        }
+        
+        .week-highlight {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .week-highlight h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .tips-box {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tips-box h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .article-image {
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .article-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .sidebar-widget h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .related-articles {
+            list-style: none;
+        }
+        
+        .related-articles li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .related-articles li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .related-articles a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .related-articles a:hover {
+            color: var(--primary);
+        }
+        
+        .related-articles a i {
+            margin-right: 8px;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-share a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .social-share a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook { background: #3b5998; }
+        .twitter { background: #1da1f2; }
+        .linkedin { background: #0077b5; }
+        .pinterest { background: #e60023; }
+        
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 3rem 0;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .author-social a {
+            color: var(--text-light);
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+        
+        .author-social a:hover {
+            color: var(--primary);
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        .comments-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .comment-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer - Reuse your existing footer styles */
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .article-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-sidebar {
+                margin-top: 3rem;
+                position: static;
+            }
+            
+            .article-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .article-header {
+                height: 50vh;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .article-content {
+                padding: 1.5rem;
+            }
+            
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-avatar {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .article-header {
+                height: 40vh;
+            }
+            
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple WhatsApp Chat Link -->
+<div class="whatsapp-chat">
+  <a href="https://wa.me/254790617211" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- Font Awesome for WhatsApp icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  .whatsapp-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+  }
+  
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+  }
+  
+  /* Optional: Add a tooltip */
+  .whatsapp-btn::after {
+    content: "Chat with us on WhatsApp";
+    position: absolute;
+    right: 70px;
+    width: max-content;
+    padding: 8px 12px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+  }
+</style>
+    <!-- Reuse your existing header -->
+    <header id="header">
+        <!-- Your header content here -->
+    </header>
+
+    <!-- Article Header -->
+    <div class="article-header">
+        <div class="article-header-content">
+            <span class="category-tag">Beginner</span>
+            <h1>The Complete 4-Week Beginner Cycling Routine</h1>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>By John Karanja</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>June 15, 2023</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>8 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="article-container">
+            <!-- Main Article Content -->
+            <main class="article-content">
+                <p>Starting a cycling routine can be both exciting and intimidating, especially if you're new to the sport. This 4-week beginner cycling plan is designed to help you build endurance, strength, and confidence on the bike gradually and safely. Whether you're cycling for fitness, commuting, or just for fun, this routine will set you on the right path.</p>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Group of beginner cyclists riding together">
+                    <p class="image-caption">Cycling with others can make your beginner journey more enjoyable</p>
+                </div>
+                
+                <h2>Before You Start</h2>
+                <p>Before beginning this routine, make sure you have:</p>
+                <ul>
+                    <li>A properly fitted bicycle (visit your local bike shop for a fitting) <a href="shop.html">get</a> </li>
+                    <li>A comfortable helmet that meets safety standards</li>
+                    <li>Padded cycling shorts or a comfortable seat</li>
+                    <li>Water bottle and cage mounted on your bike</li>
+                    <li>Basic bike tools (pump, spare tube, tire levers)</li>
+                </ul>
+                
+                <div class="tips-box">
+                    <h4>Pro Tip</h4>
+                    <p>Consider getting a bike computer or using a cycling app to track your distance, time, and progress. Many beginners find motivation in seeing their improvements over time. <a href="shop.html">get</a></p>
+                </div>
+                
+                <h2>The 4-Week Beginner Cycling Plan</h2>
+                <p>This plan assumes you're starting from minimal cycling experience. Each week builds on the previous one, gradually increasing duration and intensity. Always begin each ride with 5-10 minutes of easy pedaling to warm up, and finish with 5 minutes of easy pedaling to cool down.</p>
+                
+                <div class="training-plan">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Week</th>
+                                <th>Frequency</th>
+                                <th>Duration</th>
+                                <th>Intensity</th>
+                                <th>Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>3 rides</td>
+                                <td>20-30 minutes</td>
+                                <td>Easy pace</td>
+                                <td>Getting comfortable on the bike</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>3-4 rides</td>
+                                <td>30-40 minutes</td>
+                                <td>Moderate pace</td>
+                                <td>Building endurance</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>4 rides</td>
+                                <td>40-50 minutes</td>
+                                <td>Mix of moderate and brisk pace</td>
+                                <td>Increasing stamina</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>4-5 rides</td>
+                                <td>50-60 minutes</td>
+                                <td>Varied intensity</td>
+                                <td>Consolidating gains</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Week 1: Getting Started</h3>
+                <p>Your first week is all about getting comfortable on the bike and establishing a routine.</p>
+                
+                <div class="week-highlight">
+                    <h4>Week 1 Workouts</h4>
+                    <ul>
+                        <li><strong>Ride 1:</strong> 20 minutes at easy pace on flat terrain</li>
+                        <li><strong>Ride 2:</strong> 25 minutes with slight inclines</li>
+                        <li><strong>Ride 3:</strong> 30 minutes at comfortable pace</li>
+                    </ul>
+                </div>
+                
+                <p>Focus on proper cycling posture: relaxed shoulders, slightly bent elbows, and a light grip on the handlebars. Pay attention to your pedal stroke—try to pedal in smooth circles rather than just pushing down.</p>
+                
+                <h3>Week 2: Building Endurance</h3>
+                <p>Now that you're comfortable on the bike, we'll increase duration slightly and introduce more varied terrain.</p>
+                
+                <div class="week-highlight">
+                    <h4>Week 2 Workouts</h4>
+                    <ul>
+                        <li><strong>Ride 1:</strong> 30 minutes with some small hills</li>
+                        <li><strong>Ride 2:</strong> 35 minutes at moderate pace</li>
+                        <li><strong>Ride 3:</strong> 40 minutes with varied terrain</li>
+                        <li><strong>Optional Ride 4:</strong> 20-30 minute recovery ride</li>
+                    </ul>
+                </div>
+                
+                <p>Practice shifting gears to maintain a consistent pedaling speed (cadence) of about 70-90 revolutions per minute (RPM). This will help you ride more efficiently and reduce strain on your knees.</p>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cyclist riding on a scenic road">
+                    <p class="image-caption">Enjoying scenic routes can make your rides more enjoyable</p>
+                </div>
+                
+                <h3>Week 3: Increasing Stamina</h3>
+                <p>This week introduces slightly longer rides and begins to vary the intensity.</p>
+                
+                <div class="week-highlight">
+                    <h4>Week 3 Workouts</h4>
+                    <ul>
+                        <li><strong>Ride 1:</strong> 40 minutes with moderate hills</li>
+                        <li><strong>Ride 2:</strong> 45 minutes at moderate pace</li>
+                        <li><strong>Ride 3:</strong> 30 minutes with intervals (1 min brisk, 2 min easy)</li>
+                        <li><strong>Ride 4:</strong> 50 minutes at comfortable pace</li>
+                    </ul>
+                </div>
+                
+                <p>The interval ride is your first introduction to higher intensity. Don't overdo it—the brisk pace should be challenging but sustainable for the minute. The goal is to vary your effort, not exhaust yourself.</p>
+                
+                <div class="tips-box">
+                    <h4>Hydration Tip</h4>
+                    <p>Start drinking before you feel thirsty. A good rule is to take a sip of water every 15 minutes during your ride. For rides under an hour, water is sufficient; for longer rides, consider an electrolyte drink.</p>
+                </div>
+                
+                <h3>Week 4: Consolidating Gains</h3>
+                <p>Your final week of the beginner program brings longer rides and more varied intensity.</p>
+                
+                <div class="week-highlight">
+                    <h4>Week 4 Workouts</h4>
+                    <ul>
+                        <li><strong>Ride 1:</strong> 50 minutes with varied terrain</li>
+                        <li><strong>Ride 2:</strong> 40 minutes with intervals (2 min brisk, 3 min easy)</li>
+                        <li><strong>Ride 3:</strong> 60 minutes at comfortable pace</li>
+                        <li><strong>Ride 4:</strong> 45 minutes with hills</li>
+                        <li><strong>Optional Ride 5:</strong> 30 minute recovery ride</li>
+                    </ul>
+                </div>
+                
+                <p>By now you should notice significant improvements in your endurance and comfort on the bike. Celebrate your progress—you're no longer a complete beginner!</p>
+                
+                <h2>What's Next?</h2>
+                <p>After completing this 4-week beginner cycling routine, you have several options:</p>
+                <ol>
+                    <li><strong>Repeat the program</strong> at slightly higher intensity if you want more time to build confidence</li>
+                    <li><strong>Move to an intermediate program</strong> that includes more structured workouts</li>
+                    <li><strong>Join a cycling club</strong> to ride with others and learn new skills</li>
+                    <li><strong>Set a specific goal</strong> like completing a metric century (100km) or trying a local charity ride</li>
+                </ol>
+                
+                <div class="tips-box">
+                    <h4>Maintenance Matters</h4>
+                    <p>As you ride more, basic bike maintenance becomes important. Learn how to clean and lube your chain, check tire pressure before each ride, and recognize when your brakes need adjustment. A well-maintained bike is safer and more enjoyable to ride.</p>
+                </div>
+                
+                <h2>Common Beginner Mistakes to Avoid</h2>
+                <ul>
+                    <li><strong>Starting too hard:</strong> Many beginners push too hard in the first few rides and then feel too sore to continue. Start easy and progress gradually.</li>
+                    <li><strong>Improper bike fit:</strong> A poorly fitted bike can lead to discomfort or injury. If you experience persistent pain (especially in knees, back, or neck), consult a bike fit specialist.</li>
+                    <li><strong>Neglecting nutrition:</strong> Even as a beginner, proper fueling before and after rides will improve your performance and recovery.</li>
+                    <li><strong>Comparing yourself to others:</strong> Everyone progresses at their own pace. Focus on your own improvement rather than comparing yourself to more experienced riders.</li>
+                </ul>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80" alt="Cyclist checking bike before ride">
+                    <p class="image-caption">Always perform a quick safety check before each ride</p>
+                </div>
+                
+                <h2>Final Thoughts</h2>
+                <p>Congratulations on taking the first steps toward becoming a cyclist! This 4-week beginner cycling routine is designed to help you build a solid foundation while minimizing the risk of injury or burnout. Remember that consistency is more important than intensity—showing up for your scheduled rides is what will lead to progress.</p>
+                
+                <p>Listen to your body and adjust the plan as needed. Some muscle soreness is normal, but sharp pains or persistent discomfort are signals to rest or seek advice. Most importantly, have fun and enjoy the journey!</p>
+                
+                <!-- Author Box -->
+                <div class="author-box">
+                    
+                    <div class="author-info">
+                        <h4>About the Author</h4>
+                        <p>John Karanja is a certified cycling coach with over 10 years of experience helping beginners discover the joy of cycling. He's the founder of Nairobi Cycling Academy and has trained hundreds of new cyclists.</p>
+                      
+                    </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h3>Comments</h3>
+                    <p>Have you tried this beginner cycling routine? Share your experience or ask questions below!</p>
+                    
+                    <form class="comment-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" name="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Post Comment</button>
+                    </form>
+                </div>
+            </main>
+            
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <div class="sidebar-widget">
+                    <h3>About This Routine</h3>
+                    <p>This 4-week beginner cycling plan is designed for absolute beginners or those returning to cycling after a long break. It focuses on building endurance and confidence gradually.</p>
+                    <p><strong>Difficulty:</strong> Beginner</p>
+                    <p><strong>Equipment Needed:</strong> Bike, helmet, water bottle</p>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Share This Article</h3>
+                    <div class="social-share">
+                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Related Articles</h3>
+                    <ul class="related-articles">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Essential Cycling Gear for Beginners</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> How to Choose Your First Bike</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cycling Safety Tips Every Beginner Should Know</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 8-Week Intermediate Cycling Plan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Newsletter</h3>
+                    <p>Get more cycling tips and training plans delivered to your inbox. for $5 = ksh 645</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required>
+                        </div>
+                        <button type="submit" class="submit-btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Reuse your existing footer -->
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+
+    <script>
+        // You can reuse your existing JavaScript for mobile menu, etc.
+        // Add any additional functionality specific to this page here
+    </script>
+</body>
+</html>
