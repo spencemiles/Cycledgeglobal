@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cycle Edge | Become the Cyclist You're Meant to Be</title>
+  <title>CycleEdge | Africa's Premier Cycling Platform</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #00a8ff;
-      --secondary: #0097e6;
+      --primary-dark: #0097e6;
       --accent: #ff6b6b;
-      --dark: #2f3640;
+      --accent-dark: #e84118;
+      --dark: #1e272e;
+      --darker: #1a2026;
       --light: #f5f6fa;
+      --gray: #dfe6e9;
       --success: #4cd137;
       --warning: #fbc531;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     * {
@@ -27,52 +32,143 @@
       font-family: 'Open Sans', sans-serif;
       color: var(--dark);
       background-color: var(--light);
-      line-height: 1.6;
+      line-height: 1.7;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Montserrat', sans-serif;
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
+      line-height: 1.3;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 168, 255, 0.4);
+      background: var(--primary-dark);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      color: #666;
     }
 
     /* Header Styles */
     header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: rgba(30, 39, 46, 0.95);
       color: white;
-      padding: 1rem 0;
+      padding: 20px 0;
       position: fixed;
       width: 100%;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
     }
 
     header.scrolled {
-      padding: 0.5rem 0;
-      background: rgba(0, 168, 255, 0.95);
-      backdrop-filter: blur(10px);
+      padding: 10px 0;
+      box-shadow: var(--shadow);
     }
 
     .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
     }
 
     .logo {
       font-size: 1.8rem;
-      font-weight: 900;
+      font-weight: 800;
       display: flex;
       align-items: center;
     }
 
     .logo i {
-      margin-right: 0.5rem;
+      margin-right: 10px;
       color: var(--accent);
+    }
+
+    .logo span {
+      color: var(--primary);
     }
 
     nav ul {
@@ -81,15 +177,21 @@
     }
 
     nav ul li {
-      margin-left: 1.5rem;
+      margin-left: 30px;
+      position: relative;
     }
 
     nav ul li a {
       color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a i {
+      margin-right: 5px;
     }
 
     nav ul li a:hover {
@@ -104,7 +206,7 @@
       background: var(--accent);
       bottom: -5px;
       left: 0;
-      transition: width 0.3s ease;
+      transition: var(--transition);
     }
 
     nav ul li a:hover::after {
@@ -118,312 +220,437 @@
       color: white;
       font-size: 1.5rem;
       cursor: pointer;
+      z-index: 1001;
     }
 
     /* Hero Section */
     .hero {
       height: 100vh;
+      min-height: 700px;
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                   url('https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(transparent, var(--light));
+      z-index: 1;
     }
 
     .hero-content {
       max-width: 800px;
+      color: white;
+      position: relative;
+      z-index: 2;
       animation: fadeInUp 1s ease;
     }
 
     .hero h1 {
       font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
 
     .hero p {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: var(--accent);
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    .hero-btns {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    .stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 50px;
+      flex-wrap: wrap;
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid white;
-      margin-left: 1rem;
+    .stat-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 150px;
+      text-align: center;
+      transition: var(--transition);
     }
 
-    .btn-outline:hover {
-      background: white;
-      color: var(--dark);
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.8;
     }
 
     /* About Section */
-    .section {
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      display: inline-block;
-    }
-
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 4px;
-      background: var(--accent);
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
+    .about {
+      background-color: white;
     }
 
     .about-content {
       display: flex;
       align-items: center;
-      gap: 3rem;
-      margin-bottom: 4rem;
+      gap: 50px;
     }
 
     .about-text {
       flex: 1;
-      animation: fadeInLeft 1s ease;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .about-features {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 3px;
+    }
+
+    .feature-text h4 {
+      margin-bottom: 5px;
+      color: var(--dark);
     }
 
     .about-image {
       flex: 1;
-      animation: fadeInRight 1s ease;
+      position: relative;
     }
 
     .about-image img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow);
     }
 
-    /* Features Section */
-    .features {
-      background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
-      padding: 6rem 2rem;
+    .about-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 5px solid var(--primary);
+      border-radius: 10px;
+      top: -20px;
+      left: -20px;
+      z-index: -1;
     }
 
-    .features-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    /* Mission Section */
+    .mission {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
 
-    .features-grid {
+    .mission::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2022&q=80') no-repeat center center/cover;
+      opacity: 0.1;
+    }
+
+    .mission .section-title h2 {
+      color: white;
+    }
+
+    .mission .section-title h2::after {
+      background: var(--accent);
+    }
+
+    .mission-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      gap: 30px;
     }
 
-    .feature-card {
-      background: white;
-      padding: 2rem;
+    .mission-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 40px 30px;
       border-radius: 10px;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .feature-card.animate {
-      opacity: 1;
-      transform: translateY(0);
+    .mission-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
     }
 
-    .feature-card:nth-child(1) { transition-delay: 0.1s; }
-    .feature-card:nth-child(2) { transition-delay: 0.2s; }
-    .feature-card:nth-child(3) { transition-delay: 0.3s; }
-    .feature-card:nth-child(4) { transition-delay: 0.4s; }
-
-    .feature-icon {
+    .mission-card i {
       font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
+      color: white;
+      margin-bottom: 20px;
     }
 
-    .feature-card h3 {
-      margin-bottom: 1rem;
-      color: var(--dark);
+    .mission-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
     }
 
-    .feature-card:hover {
+    /* Services Section */
+    .services {
+      background-color: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
-    /* Programs Section */
-    .programs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-
-    .program-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .program-card.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .program-card:nth-child(1) { transition-delay: 0.1s; }
-    .program-card:nth-child(2) { transition-delay: 0.2s; }
-    .program-card:nth-child(3) { transition-delay: 0.3s; }
-
-    .program-image {
+    .service-image {
       height: 200px;
       overflow: hidden;
     }
 
-    .program-image img {
+    .service-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
 
-    .program-card:hover .program-image img {
+    .service-card:hover .service-image img {
       transform: scale(1.1);
     }
 
-    .program-content {
-      padding: 1.5rem;
+    .service-content {
+      padding: 25px;
     }
 
-    .program-content h3 {
-      margin-bottom: 0.5rem;
+    .service-content h3 {
+      margin-bottom: 10px;
       color: var(--primary);
     }
 
-    .program-content .price {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 1rem;
+    .service-content p {
+      color: #666;
+      margin-bottom: 20px;
     }
 
-    .program-content .btn {
-      display: block;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    /* Affiliate Section */
-    .affiliate {
-      background: linear-gradient(135deg, var(--dark), #1e272e);
+    /* Achievements Section */
+    .achievements {
+      background: linear-gradient(135deg, var(--darker), var(--dark));
       color: white;
-      text-align: center;
-      padding: 6rem 2rem;
+      position: relative;
     }
 
-    .affiliate-container {
+    .achievements::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      opacity: 0.1;
+    }
+
+    .achievements .section-title h2 {
+      color: white;
+    }
+
+    .achievements .section-title h2::after {
+      background: var(--accent);
+    }
+
+    .timeline {
+      position: relative;
       max-width: 800px;
       margin: 0 auto;
     }
 
-    .affiliate h2 {
-      color: white;
-      margin-bottom: 2rem;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
     }
 
-    .affiliate p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s ease;
     }
 
-    .affiliate-logos {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 3rem;
+    .timeline-item.animate {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .affiliate-logo {
-      background: white;
-      padding: 1rem 1.5rem;
-      border-radius: 5px;
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 10px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 50%;
+      right: -38px;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 50%;
+      left: -38px;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* Partners Section */
+    .partners {
+      background-color: white;
+    }
+
+    .partners-slider {
       display: flex;
       align-items: center;
-      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
     }
 
-    .affiliate-logo:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    .partners-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: calc(200px * 14);
     }
 
-    .affiliate-logo img {
-      height: 40px;
-      width: auto;
+    .partner-logo {
+      height: 80px;
+      margin: 0 30px;
+      display: flex;
+      align-items: center;
       filter: grayscale(100%);
-      transition: filter 0.3s ease;
+      opacity: 0.7;
+      transition: var(--transition);
     }
 
-    .affiliate-logo:hover img {
+    .partner-logo:hover {
       filter: grayscale(0);
+      opacity: 1;
     }
 
-    /* Testimonials */
+    .partner-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* Testimonials Section */
     .testimonials {
       background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
-      padding: 6rem 2rem;
-    }
-
-    .testimonials-container {
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     .testimonial-slider {
       position: relative;
+      max-width: 800px;
+      margin: 0 auto;
       overflow: hidden;
-      padding: 2rem 0;
     }
 
     .testimonial-track {
@@ -433,15 +660,15 @@
 
     .testimonial-card {
       min-width: 100%;
-      padding: 0 1rem;
+      padding: 0 15px;
       box-sizing: border-box;
     }
 
     .testimonial-content {
       background: white;
-      padding: 2rem;
+      padding: 40px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow);
       position: relative;
     }
 
@@ -451,15 +678,17 @@
       color: var(--primary);
       opacity: 0.2;
       position: absolute;
-      top: 10px;
+      top: 20px;
       left: 20px;
+      font-family: serif;
     }
 
     .testimonial-text {
       font-style: italic;
-      margin-bottom: 1.5rem;
+      margin-bottom: 30px;
       position: relative;
       z-index: 1;
+      color: #555;
     }
 
     .testimonial-author {
@@ -472,7 +701,8 @@
       height: 60px;
       border-radius: 50%;
       overflow: hidden;
-      margin-right: 1rem;
+      margin-right: 15px;
+      border: 3px solid var(--primary);
     }
 
     .author-avatar img {
@@ -482,14 +712,19 @@
     }
 
     .author-info h4 {
-      margin-bottom: 0.2rem;
+      margin-bottom: 5px;
       color: var(--primary);
+    }
+
+    .author-info p {
+      color: #777;
+      font-size: 14px;
     }
 
     .slider-nav {
       display: flex;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 30px;
     }
 
     .slider-dot {
@@ -499,7 +734,7 @@
       background: #ccc;
       margin: 0 5px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
     .slider-dot.active {
@@ -507,169 +742,149 @@
       transform: scale(1.2);
     }
 
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .team-member {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .team-member.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .team-member:nth-child(1) { transition-delay: 0.1s; }
-    .team-member:nth-child(2) { transition-delay: 0.2s; }
-    .team-member:nth-child(3) { transition-delay: 0.3s; }
-    .team-member:nth-child(4) { transition-delay: 0.4s; }
-
-    .member-image {
-      height: 300px;
-      overflow: hidden;
-    }
-
-    .member-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .team-member:hover .member-image img {
-      transform: scale(1.1);
-    }
-
-    .member-info {
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .member-info h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .member-info p {
-      color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .social-links a {
-      color: var(--dark);
-      transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-      color: var(--primary);
-      transform: translateY(-3px);
-    }
-
     /* CTA Section */
     .cta {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white;
       text-align: center;
-      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .cta-container {
-      max-width: 800px;
-      margin: 0 auto;
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2022&q=80') no-repeat center center/cover;
+      opacity: 0.1;
     }
 
-    .cta h2 {
+    .cta .section-title h2 {
       color: white;
-      margin-bottom: 1.5rem;
     }
 
-    .cta p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
+    .cta .section-title h2::after {
+      background: var(--primary);
     }
 
     .cta-form {
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 15px;
+      justify-content: center;
     }
 
     .cta-form input {
       flex: 1;
-      min-width: 200px;
-      padding: 0.8rem 1rem;
+      min-width: 250px;
+      padding: 15px 20px;
       border: none;
       border-radius: 50px;
       font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
     }
 
     .cta-form .btn {
-      padding: 0.8rem 2.5rem;
+      padding: 15px 40px;
     }
 
     /* Footer */
     footer {
-      background: var(--dark);
+      background: var(--darker);
       color: white;
-      padding: 4rem 2rem 2rem;
+      padding: 80px 0 0;
     }
 
     .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
     .footer-col h3 {
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 25px;
       font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
     }
 
-    .footer-col ul {
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-col p {
+      margin-bottom: 20px;
+      color: #bbb;
+    }
+
+    .footer-links {
       list-style: none;
     }
 
-    .footer-col ul li {
-      margin-bottom: 0.8rem;
+    .footer-links li {
+      margin-bottom: 15px;
     }
 
-    .footer-col ul li a {
-      color: #ddd;
-      text-decoration: none;
-      transition: all 0.3s ease;
+    .footer-links li a {
+      color: #bbb;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
     }
 
-    .footer-col ul li a:hover {
+    .footer-links li a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .footer-links li a:hover {
       color: var(--accent);
       padding-left: 5px;
     }
 
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
     .footer-bottom {
       text-align: center;
-      padding-top: 2rem;
-      margin-top: 2rem;
+      padding: 20px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #bbb;
+      font-size: 14px;
     }
 
     /* Animations */
@@ -706,442 +921,631 @@
       }
     }
 
-    /* Media Queries */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.8rem;
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
       }
-      
+      100% {
+        transform: translateX(calc(-200px * 7));
+      }
+    }
+
+    /* Widgets */
+    .widget {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .widget-title {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .widget-title::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      bottom: 0;
+      left: 0;
+    }
+
+    .event-list {
+      list-style: none;
+    }
+
+    .event-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+
+    .event-item:last-child {
+      border-bottom: none;
+    }
+
+    .event-date {
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .event-date .day {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-date .month {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .event-info h4 {
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .event-info p {
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    .newsletter-widget input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
       .about-content {
         flex-direction: column;
       }
-      
+
       .about-text, .about-image {
         flex: none;
         width: 100%;
       }
+
+      .about-image {
+        margin-top: 40px;
+      }
+
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content::after,
+      .timeline-item:nth-child(even) .timeline-content::after {
+        left: 20px;
+        right: auto;
+      }
     }
 
     @media (max-width: 768px) {
-      .header-container {
-        padding: 0 1rem;
-      }
-      
-      nav ul {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--primary);
-        flex-direction: column;
-        align-items: center;
-        padding-top: 2rem;
-        transition: all 0.5s ease;
-      }
-      
-      nav ul.active {
-        left: 0;
-      }
-      
-      nav ul li {
-        margin: 1rem 0;
-      }
-      
       .mobile-menu-btn {
         display: block;
       }
-      
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--dark);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: var(--transition);
+      }
+
+      nav ul.active {
+        left: 0;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
       .hero h1 {
         font-size: 2.2rem;
       }
-      
+
       .hero p {
         font-size: 1rem;
       }
-      
-      .btn {
-        padding: 0.6rem 1.5rem;
+
+      .stats {
+        gap: 15px;
       }
-      
+
+      .stat-item {
+        min-width: 120px;
+        padding: 15px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
       .section-title h2 {
         font-size: 2rem;
+      }
+
+      .mission-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-content {
+        padding: 30px 20px;
       }
     }
 
     @media (max-width: 576px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .hero {
+        min-height: 600px;
+      }
+
       .hero h1 {
         font-size: 1.8rem;
       }
-      
-      .section {
-        padding: 4rem 1rem;
-      }
-      
-      .features, .testimonials {
-        padding: 4rem 1rem;
-      }
-      
-      .cta-form {
-        flex-direction: column;
-      }
-      
-      .cta-form input, .cta-form .btn {
+
+      .hero-btns .btn {
         width: 100%;
+        text-align: center;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
       }
     }
-    
   </style>
 </head>
 <body>
   <!-- Header -->
   <header id="header">
-    <div class="header-container">
+    <div class="container header-container">
       <div class="logo">
         <i class="fas fa-bicycle"></i>
-        <span>Cycle Edge</span>
+        <span>Cycle</span>Edge
       </div>
-      <nav>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
-        </button>
-        <ul id="navMenu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">shop</a></li>
-          <li><a href="repairs.html">repairs</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+      <nav class="mobile-nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="repairs.html">Repairs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Find Your Cycling Edge</h1>
-      <p>Join our community of passionate cyclists and transform your riding experience with expert coaching, top-tier equipment, and a supportive community.</p>
-      <div>
-        <a href="#programs" class="btn">Get Started</a>
-        <a href="#about" class="btn btn-outline">Learn More</a>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Africa's Premier Cycling Platform</h1>
+        <p>Connecting cyclists, vendors, and enthusiasts across Kenya with quality resources, events, and community support to elevate your riding experience.</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn">Explore Services</a>
+          <a href="#contact" class="btn btn-outline">Join Community</a>
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">5K+</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Events Hosted</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Local Partners</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section class="section" id="about">
-    <div class="section-title">
-      <h2>About Cycle Edge</h2>
-    </div>
-    <div class="about-content">
-      <div class="about-text">
-        <h3>Your Journey Starts Here</h3>
-        <p>At Cycle Edge, we believe everyone has the potential to become an exceptional cyclist. Founded in 2015, we've helped thousands of riders discover their passion for cycling and push their limits.</p>
-        <p>Our state-of-the-art facility combines cutting-edge technology with expert coaching to help you achieve your cycling goals, whether you're a complete beginner or an experienced racer.</p>
-        <p>We're more than just a bike shop - we're a community of cycling enthusiasts dedicated to helping you find your edge.</p>
-      </div>
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cycle Edge Facility">
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <div class="features-container">
+  <section class="section about" id="about">
+    <div class="container">
       <div class="section-title">
-        <h2>Why Choose Cycle Edge</h2>
+        <h2>About CycleEdge</h2>
+        <p>Africa's fastest growing digital cycling community and resource hub</p>
       </div>
-      <div class="features-grid" id="featuresGrid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-trophy"></i>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Your Complete Cycling Ecosystem</h3>
+          <p>CycleEdge is a dynamic and innovative cycling platform developed to unite, empower, and elevate the cycling community in Kenya and beyond. Established in early 2024, CycleEdge was created to provide a centralized digital space for cyclists, vendors, tour organizers, and enthusiasts to interact, share resources, access services, and engage with the growing cycling culture in Africa.</p>
+          <p>At its core, CycleEdge brings together everything that matters in the world of cycling—from curated cycling events and guided tours, to gear reviews, exclusive product deals, local vendor support, and global community engagement.</p>
+          
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-globe-africa"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Local Focus</h4>
+                <p>Designed specifically for African cycling conditions and needs</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Community Driven</h4>
+                <p>Built by cyclists, for cyclists</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Affordable Access</h4>
+                <p>Quality gear and services at fair prices</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Safety First</h4>
+                <p>Promoting safe riding practices</p>
+              </div>
+            </div>
           </div>
-          <h3>Expert Coaching</h3>
-          <p>Our certified coaches have trained Olympic athletes and beginners alike with personalized training plans.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3>Cutting-Edge Tech</h3>
-          <p>Access to the latest in bike fitting technology, performance tracking, and recovery tools.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3>Vibrant Community</h3>
-          <p>Join group rides, workshops, and social events with fellow cycling enthusiasts.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-heartbeat"></i>
-          </div>
-          <h3>Holistic Approach</h3>
-          <p>We focus on nutrition, recovery, and mental training alongside your cycling development.</p>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="CycleEdge Community">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Programs Section -->
- <section class="section" id="programs">
-  <div class="section-title">
-    <h2>Our Cycling Programs</h2>
-    <p>Start your cycling journey with affordable and practical programs designed for Kenyan riders.</p>
-  </div>
-  <div class="programs-grid" id="programsGrid">
-    
-    <!-- Beginner -->
-    <div class="program-card">
-      <div class="program-image">
-        <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Beginner Program">
+  <!-- Mission Section -->
+  <section class="section mission">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Vision & Mission</h2>
+        <p>Driving the cycling revolution in Africa</p>
       </div>
-      <div class="program-content">
-        <h3>Beginner Rider Program</h3>
-        <p>Ideal for new cyclists. Learn road safety, basic bike handling, and maintenance in this 4-week Nairobi-based training.</p>
-        <div class="price">KSH 500</div>
-        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Beginner%20Rider%20Program%20(KSH%20 500)" class="btn">Enroll via WhatsApp</a>
-      </div>
-    </div>
-
-    <!-- Intermediate -->
-    <div class="program-card">
-      <div class="program-image">
-        <img src="https://www.cyclinguk.org/sites/default/files/styles/xxs_cuk_16_9_hero_max_575_98px/public/roofowler_rz95160_0.jpg?h=8c1344d8&itok=yu5xBFI7" alt="Intermediate Program">
-      </div>
-      <div class="program-content">
-        <h3>Fitness & Endurance Program</h3>
-        <p>Build your stamina and strength for long-distance cycling. Includes weekend rides and progress tracking over 6 weeks.</p>
-        <div class="price">KSH1,000</div>
-        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Fitness%20%26%20Endurance%20Program%20(KSH%201000)" class="btn">Join via WhatsApp</a>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <i class="fas fa-bullseye"></i>
+          <h3>Our Mission</h3>
+          <p>To empower every cyclist in Africa with the tools, resources, and community they need to thrive. We believe cycling can transform lives—through improved health, eco-friendly transport, and community empowerment.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-eye"></i>
+          <h3>Our Vision</h3>
+          <p>To become Africa's most trusted and vibrant online cycling hub—where cyclists of all levels can connect, discover, and grow, while driving social, economic, and environmental impact through two wheels.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-flag-checkered"></i>
+          <h3>Our Direction</h3>
+          <p>We're growing into an all-in-one platform to connect African cyclists globally, promote local businesses, educate riders, sustain cycling culture, and engage youth through clubs and sponsorships.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Advanced -->
-    <div class="program-card">
-      <div class="program-image">
-        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Advanced Program">
+  <!-- Services Section -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Everything you need for your cycling journey in one place</p>
       </div>
-      <div class="program-content">
-        <h3>Elite Race Prep Program</h3>
-        <p>Designed for competitive cyclists. Includes performance coaching, race strategy, and nutrition guidance for 8 weeks.</p>
-        <div class="price">KSH 1,500</div>
-        <a href="https://wa.me/254790617211?text=Hi!%20I'm%20interested%20in%20the%20Elite%20Race%20Prep%20Program%20(KSH%201,500)" class="btn">Apply on WhatsApp</a>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Event Promotion">
+          </div>
+          <div class="service-content">
+            <h3>Event Promotion</h3>
+            <p>We list and promote both local and international cycling events. Whether you're looking for a weekend race in Nairobi or a long-distance tour across the coast, our platform is your go-to guide.</p>
+            <a href="#" class="btn btn-accent">Find Events</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Bike Marketplace">
+          </div>
+          <div class="service-content">
+            <h3>Bike Marketplace</h3>
+            <p>CycleEdge supports local shops by giving them a digital storefront. Users can buy, rent, or repair bikes, order accessories, or browse gear from trusted vendors across Kenya.</p>
+            <a href="#" class="btn btn-accent">Shop Now</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2022&q=80" alt="Cycling Tours">
+          </div>
+          <div class="service-content">
+            <h3>Cycling Adventures</h3>
+            <p>We actively promote cycling tours across scenic landscapes, helping users discover new routes while supporting local guides and eco-tourism efforts throughout Kenya.</p>
+            <a href="#" class="btn btn-accent">Explore Tours</a>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-  <!-- Affiliate Section -->
- <section class="affiliate">
-  <div class="affiliate-container">
-    <h2>Earn with Our Affiliate Program</h2>
-    <p>Affiliate marketing is a simple way to earn money by recommending cycling products you trust. When someone clicks your unique link and makes a purchase, you get a commission — no inventory, no hassle.</p>
-    <p>Whether you're a cycling fan, blogger, or just love sharing great deals, our affiliate program lets you earn while helping others get quality gear.</p>
-    
-    <div class="affiliate-logos">
-      <div class="affiliate-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Shimano_logo.svg/2560px-Shimano_logo.svg.png" alt="Shimano">
+  <!-- Achievements Section -->
+  <section class="section achievements" id="achievements">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Achievements</h2>
+        <p>Milestones in our journey to transform cycling in Africa</p>
       </div>
-      <div class="affiliate-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Specialized_logo.svg/2560px-Specialized_logo.svg.png" alt="Specialized">
-      </div>
-      <div class="affiliate-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Garmin_logo.svg/2560px-Garmin_logo.svg.png" alt="Garmin">
-      </div>
-      <div class="affiliate-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Cannondale_Logo.svg/1200px-Cannondale_Logo.svg.png" alt="Cannondale">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2024 Q1</div>
+            <h3>Platform Launch</h3>
+            <p>Successfully launched the CycleEdge platform with initial partnerships with 5 local bike shops and 3 cycling clubs in Nairobi.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2024 Q2</div>
+            <h3>First Major Event</h3>
+            <p>Hosted the Nairobi Challenge with over 200 participants, marking our first major cycling event promotion.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2024 Q3</div>
+            <h3>5,000 Users</h3>
+            <p>Reached our first major milestone of 5,000 active users across Kenya within just 6 months of operation.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2024 Q4</div>
+            <h3>Vendor Expansion</h3>
+            <p>Supported 50+ local vendors and mechanics, allowing them to list services and products online, expanding their reach.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2025 Q1</div>
+            <h3>Brand Partnerships</h3>
+            <p>Created exclusive deals with international brands to provide cycling gear and bikes at subsidized costs for our community.</p>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <a href="https://wa.me/254790617211?text=I'm%20interested%20in%20joining%20your%20affiliate%20program" class="cta-button">Join Our Affiliate Program</a>
-  </div>
-</section>
-<style>
-    .cta-button {
-  display: inline-block;
-  padding: 12px 25px;
-  font-size: 1rem;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: background 0.3s ease;
-}
-
-.cta-button:hover {
-  background: linear-gradient(135deg, #0056b3, #003f7f);
-}
-</style>
+  <!-- Partners Section -->
+  <section class="section partners">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Partners</h2>
+        <p>Trusted by leading brands and organizations in the cycling world</p>
+      </div>
+      <div class="partners-slider">
+        <div class="partners-track">
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Shimano_logo.svg/2560px-Shimano_logo.svg.png" alt="Shimano">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Specialized_logo.svg/2560px-Specialized_logo.svg.png" alt="Specialized">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Garmin_logo.svg/2560px-Garmin_logo.svg.png" alt="Garmin">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Cannondale_Logo.svg/1200px-Cannondale_Logo.svg.png" alt="Cannondale">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Trek_logo.svg/2560px-Trek_logo.svg.png" alt="Trek">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/GT_Bicycles_logo.svg/1200px-GT_Bicycles_logo.svg.png" alt="GT Bicycles">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Raleigh_bicycles_logo.svg/1200px-Raleigh_bicycles_logo.svg.png" alt="Raleigh">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Shimano_logo.svg/2560px-Shimano_logo.svg.png" alt="Shimano">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Specialized_logo.svg/2560px-Specialized_logo.svg.png" alt="Specialized">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Garmin_logo.svg/2560px-Garmin_logo.svg.png" alt="Garmin">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Cannondale_Logo.svg/1200px-Cannondale_Logo.svg.png" alt="Cannondale">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Trek_logo.svg/2560px-Trek_logo.svg.png" alt="Trek">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/GT_Bicycles_logo.svg/1200px-GT_Bicycles_logo.svg.png" alt="GT Bicycles">
+          </div>
+          <div class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Raleigh_bicycles_logo.svg/1200px-Raleigh_bicycles_logo.svg.png" alt="Raleigh">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Testimonials Section -->
-<section class="testimonials" id="testimonials">
-  <div class="testimonials-container">
-    <div class="section-title">
-      <h2>Success Stories</h2>
-    </div>
-    <div class="testimonial-slider">
-      <div class="testimonial-track" id="testimonialTrack">
-        
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <p class="testimonial-text">"I bought my first road bike from Cycle Edge and joined their weekend rides. In just a few weeks, I built stamina and made amazing cycling friends from all over Nairobi."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Kevin M.">
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Community Stories</h2>
+        <p>What our members say about the CycleEdge experience</p>
+      </div>
+      <div class="testimonial-slider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"CycleEdge completely transformed my cycling experience. I found my current riding group through their platform, and we've been exploring new routes every weekend. The vendor marketplace helped me upgrade my bike at an affordable price."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James K.">
+                </div>
+                <div class="author-info">
+                  <h4>James K.</h4>
+                  <p>Nairobi, Road Cyclist</p>
+                </div>
               </div>
-              <div class="author-info">
-                <h4>Kevin M.</h4>
-                <p>Nairobi Rider</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"As a small bike shop owner, CycleEdge has brought me more customers than I could imagine. The platform is easy to use and has helped me reach cyclists across Kenya. My business has grown by 40% since joining."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah W.">
+                </div>
+                <div class="author-info">
+                  <h4>Sarah W.</h4>
+                  <p>Bike Shop Owner, Mombasa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"The cycling tours organized through CycleEdge are incredible. I've discovered parts of Kenya I never knew existed. The guides are professional and the routes are well-planned. Highly recommend for any cycling enthusiast!"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David M.">
+                </div>
+                <div class="author-info">
+                  <h4>David M.</h4>
+                  <p>Adventure Cyclist, Nakuru</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <p class="testimonial-text">"I used to cycle alone in Eldoret, but after connecting with Cycle Edge, I joined group rides and received great advice on gear and training. I now cycle 100km+ every weekend!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Mercy W.">
-              </div>
-              <div class="author-info">
-                <h4>Mercy W.</h4>
-                <p>Fitness Enthusiast - Eldoret</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <p class="testimonial-text">"Cycle Edge helped me get my first race-ready bike. I trained hard with their support and recently competed in a local race in Kisumu. I feel more confident and motivated."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Brian O.">
-              </div>
-              <div class="author-info">
-                <h4>Brian O.</h4>
-                <p>Amateur Racer - Kisumu</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slider-nav">
-        <div class="slider-dot active" data-index="0"></div>
-        <div class="slider-dot" data-index="1"></div>
-        <div class="slider-dot" data-index="2"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  <!-- Team Section -->
-  <section class="section" id="team">
-    <div class="section-title">
-      <h2>Meet The Team</h2>
-    </div>
-    <div class="team-grid" id="teamGrid">
-      <div class="team-member">
-        <div class="member-image">
-          <img src="https://iili.io/3WeHDSR.md.jpg" alt="Sarah Chen">
-        </div>
-        <div class="member-info">
-          <h3>Gerald S.</h3>
-          <p>Performance Specialist</p>
-          <p>Professional cyclist with 10+ years cycling and coaching experience</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="team-member">
-        <div class="member-image">
-          <img src="https://iili.io/3WOQXTb.md.jpg" alt="Jamal Williams">
-        </div>
-        <div class="member-info">
-          <h3>Edward M.</h3>
-          <p>Bike Fit Expert</p>
-          <p>Professional cyclist with 10+ years Cycling coaching experience</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </div>
+        <div class="slider-nav">
+          <div class="slider-dot active" data-index="0"></div>
+          <div class="slider-dot" data-index="1"></div>
+          <div class="slider-dot" data-index="2"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta" id="contact">
-    <div class="cta-container">
-      <h2>Ready to Find Your Edge?</h2>
-      <p>Join our community of cyclists and start your journey today. Sign up for our newsletter to receive training tips, exclusive offers, and event invitations.</p>
-      <form class="cta-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h3>Cycle Edge</h3>
-        <p>Helping cyclists of all levels find their edge since 2015.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>About CycleEdge</h3>
+          <p>Africa's premier cycling platform connecting riders, vendors, and enthusiasts since 2024.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="#achievements"><i class="fas fa-chevron-right"></i> Achievements</a></li>
+            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Event Promotion</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Bike Marketplace</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Cycling Tours</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Vendor Support</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Community Hub</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Manyanja Road, Nairobi</a></li>
+            <li><a href="tel:+254790617211"><i class="fas fa-phone"></i> +254 790 617 211</a></li>
+            <li><a href="mailto:info@cycleedge.africa"><i class="fas fa-envelope"></i> info@cycleedge.africa</a></li>
+            <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8AM - 6PM</a></li>
+            <li><a href="#"><i class="fas fa-clock"></i> Sat: 9AM - 4PM</a></li>
+          </ul>
         </div>
       </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#programs">Programs</a></li>
-          <li><a href="#team">Our Team</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CycleEdge. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for the cycling community</p>
       </div>
-      <div class="footer-col">
-        <h3>Programs</h3>
-        <ul>
-          <li><a href="#">Foundations Program</a></li>
-          <li><a href="#">Performance Program</a></li>
-          <li><a href="#">Elite Racing Program</a></li>
-          <li><a href="#">Private Coaching</a></li>
-          <li><a href="#">Workshops</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Contact</h3>
-        <ul>
-          <li><i class="fas fa-map-marker-alt"></i> manyanja road</li>
-          <li><i class="fas fa-phone"></i> +254790617211</li>
-          <li><i class="fas fa-envelope"></i>spencemiles0@gmail.com</li>
-          <li><i class="fas fa-clock"></i> Mon-Fri: 9am-7pm</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Cycle Edge. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-      <p class="affiliate-disclaimer">We are a participant in various affiliate programs which means we may earn commissions on qualifying purchases made through links on our site.</p>
     </div>
   </footer>
 
@@ -1208,7 +1612,22 @@
       updateSlider(currentIndex);
     }, 5000);
 
-    // Intersection Observer for Animations
+    // Timeline Animation
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    timelineItems.forEach(item => {
+      timelineObserver.observe(item);
+    });
+
+    // Scroll Reveal Animation
     const animateOnScroll = (elements, className) => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1221,17 +1640,61 @@
       elements.forEach(element => observer.observe(element));
     };
 
-    // Animate feature cards
-    const featureCards = document.querySelectorAll('.feature-card');
-    animateOnScroll(featureCards, 'animate');
+    // Event Widget (Example of additional functionality)
+    const upcomingEvents = [
+      {
+        date: { day: "15", month: "JUN" },
+        title: "Nairobi Night Ride",
+        location: "Nairobi CBD",
+        time: "6:00 PM"
+      },
+      {
+        date: { day: "22", month: "JUN" },
+        title: "Rift Valley Challenge",
+        location: "Naivasha",
+        time: "7:00 AM"
+      },
+      {
+        date: { day: "05", month: "JUL" },
+        title: "Coastal Tour",
+        location: "Mombasa",
+        time: "6:30 AM"
+      }
+    ];
 
-    // Animate program cards
-    const programCards = document.querySelectorAll('.program-card');
-    animateOnScroll(programCards, 'animate');
+    function renderEvents() {
+      const eventsContainer = document.createElement('div');
+      eventsContainer.className = 'widget';
+      eventsContainer.innerHTML = `
+        <h3 class="widget-title">Upcoming Events</h3>
+        <ul class="event-list" id="eventList"></ul>
+      `;
+      
+      // You would insert this widget where needed in your layout
+      // For example: document.querySelector('.some-container').appendChild(eventsContainer);
+      
+      const eventList = document.getElementById('eventList');
+      if (eventList) {
+        upcomingEvents.forEach(event => {
+          const eventItem = document.createElement('li');
+          eventItem.className = 'event-item';
+          eventItem.innerHTML = `
+            <div class="event-date">
+              <div class="day">${event.date.day}</div>
+              <div class="month">${event.date.month}</div>
+            </div>
+            <div class="event-info">
+              <h4>${event.title}</h4>
+              <p>${event.location} • ${event.time}</p>
+            </div>
+          `;
+          eventList.appendChild(eventItem);
+        });
+      }
+    }
 
-    // Animate team members
-    const teamMembers = document.querySelectorAll('.team-member');
-    animateOnScroll(teamMembers, 'animate');
+    // Initialize event widget
+    document.addEventListener('DOMContentLoaded', renderEvents);
   </script>
 </body>
 </html>
