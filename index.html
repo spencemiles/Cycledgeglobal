@@ -1892,48 +1892,204 @@ document.addEventListener('click', function(e) {
     .shop-now-btn:hover {
       background-color: #1a6a8f;
     }
+/* Enhanced Jumia-style Product Grid - 1.5" × 2" Cards */
+.posters-container {
+  padding: 15px 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    /* Posters Grid */
-    .posters-container {
-      padding: 30px 0;
-    }
-    
-    .posters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    
-    .poster-item {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-    }
-    
-    .poster-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
-    
-    .poster-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
+.posters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
 
-    .poster-content {
-      padding: 15px;
-    }
+.poster-item {
+  width: 144px;
+  height: 192px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-    .poster-title {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--dark);
-    }
+.poster-image-container {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  position: relative;
+}
 
+.poster-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.poster-content {
+  padding: 10px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  min-height: 32px;
+}
+
+.price-container {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.current-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.2px;
+}
+
+.original-price {
+  font-size: 11px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.discount-badge {
+  font-size: 11px;
+  color: #f68b1e;
+  font-weight: 600;
+  background: rgba(246, 139, 30, 0.12);
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+/* Enhanced Hover Effects */
+.poster-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  border-color: #ddd;
+}
+
+.poster-item:hover .poster-image {
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1100px) {
+  .posters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+    gap: 10px;
+  }
+  .poster-item {
+    width: 136px;
+    height: 182px;
+  }
+  .poster-image-container {
+    height: 114px;
+  }
+}
+
+@media (max-width: 768px) {
+  .posters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+  }
+  .poster-item {
+    width: 124px;
+    height: 166px;
+  }
+  .poster-image-container {
+    height: 104px;
+    padding: 8px;
+  }
+  .poster-title {
+    font-size: 11px;
+  }
+  .current-price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .posters-container {
+    padding: 12px 8px;
+  }
+  .posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .poster-item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+  .poster-image-container {
+    height: 0;
+    padding-bottom: 62.5%;
+    position: relative;
+  }
+  .poster-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .poster-title {
+    font-size: 10px;
+    min-height: 28px;
+  }
+  .current-price {
+    font-size: 13px;
+  }
+}
+
+/* Loading State */
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+  gap: 12px;
+}
+
+.loading-item {
+  width: 144px;
+  height: 192px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
     /* Footer */
     .footer {
       background: var(--dark);
@@ -2065,7 +2221,9 @@ document.addEventListener('click', function(e) {
     getDocs, 
     query, 
     orderBy, 
-    limit 
+    limit,
+    where,
+    Timestamp
   } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
   // Firebase configuration
@@ -2115,12 +2273,23 @@ document.addEventListener('click', function(e) {
     });
   }
 
-  // Load posters from Firestore
+  // Load posters from Firestore (last 8 ads within 30 days)
   async function loadPosters() {
     try {
       console.log("Loading posters from Firestore...");
+      
+      // Calculate date 30 days ago
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      
       const postersRef = collection(db, "ads");
-      const q = query(postersRef, orderBy("timestamp", "desc"));
+      const q = query(
+        postersRef, 
+        where("timestamp", ">=", Timestamp.fromDate(thirtyDaysAgo)),
+        orderBy("timestamp", "desc"), 
+        limit(8)
+      );
+      
       const querySnapshot = await getDocs(q);
 
       const slideshow = document.getElementById('slideshow');
@@ -2131,30 +2300,36 @@ document.addEventListener('click', function(e) {
       postersGrid.innerHTML = '';
 
       let count = 0;
-      let slideshowContent = '';
-      let gridContent = '';
+      const posters = [];
 
-      for (const doc of querySnapshot.docs) {
+      // First collect all valid posters
+      querySnapshot.forEach(doc => {
         const poster = doc.data();
-        console.log("Poster:", poster);
-
-        // Process image for slideshow
-        if (count < 3) {
-          const slideDiv = document.createElement('div');
-          slideDiv.className = `slide ${count === 0 ? 'active' : ''}`;
-          
-          const processedImage = await processImage(poster.media, slideshow);
-          slideDiv.appendChild(processedImage);
-          
-          const slideContent = document.createElement('div');
-          slideContent.className = 'slide-content';
-          slideContent.innerHTML = `<h3 class="slide-title">${poster.title || 'New Arrival'}</h3>`;
-          slideDiv.appendChild(slideContent);
-          
-          slideshow.appendChild(slideDiv);
+        if (poster.media && poster.redirectUrl) {
+          posters.push(poster);
         }
+      });
 
-        // Process image for grid
+      // Process slideshow (first 3 posters)
+      for (let i = 0; i < Math.min(3, posters.length); i++) {
+        const poster = posters[i];
+        const slideDiv = document.createElement('div');
+        slideDiv.className = `slide ${i === 0 ? 'active' : ''}`;
+        
+        const processedImage = await processImage(poster.media, slideshow);
+        slideDiv.appendChild(processedImage);
+        
+        const slideContent = document.createElement('div');
+        slideContent.className = 'slide-content';
+        slideContent.innerHTML = `<h3 class="slide-title">${poster.title || 'New Arrival'}</h3>`;
+        slideDiv.appendChild(slideContent);
+        
+        slideshow.appendChild(slideDiv);
+        count++;
+      }
+
+      // Process grid (all 8 posters)
+      for (const poster of posters) {
         const posterItem = document.createElement('div');
         posterItem.className = 'poster-item';
         
@@ -2163,12 +2338,31 @@ document.addEventListener('click', function(e) {
         
         const posterContent = document.createElement('div');
         posterContent.className = 'poster-content';
-        posterContent.innerHTML = `<h3 class="poster-title">${poster.title || 'New Product'}</h3>`;
-        posterItem.appendChild(posterContent);
         
+        // Add price information if available
+        let priceHtml = '';
+        if (poster.price) {
+          priceHtml = `<div class="price-container">
+            <span class="current-price">${poster.price}</span>`;
+          
+          if (poster.originalPrice) {
+            priceHtml += `<span class="original-price">${poster.originalPrice}</span>`;
+          }
+          
+          if (poster.discount) {
+            priceHtml += `<span class="discount-badge">${poster.discount}</span>`;
+          }
+          
+          priceHtml += `</div>`;
+        }
+        
+        posterContent.innerHTML = `
+          <h3 class="poster-title">${poster.title || 'New Product'}</h3>
+          ${priceHtml}
+        `;
+        
+        posterItem.appendChild(posterContent);
         postersGrid.appendChild(posterItem);
-
-        count++;
       }
 
       // Initialize slideshow if we have slides
@@ -2179,12 +2373,16 @@ document.addEventListener('click', function(e) {
       console.log("Posters loaded successfully");
     } catch (error) {
       console.error("Error loading posters:", error);
+      document.getElementById('posters-grid').innerHTML = 
+        '<div class="error-message">Failed to load products</div>';
     }
   }
 
   // Slideshow functionality
   function initSlideshow() {
     const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return;
+    
     let currentSlide = 0;
     
     function showSlide(n) {
@@ -2200,9 +2398,7 @@ document.addEventListener('click', function(e) {
   }
 
   // Initialize when page loads
-  document.addEventListener('DOMContentLoaded', () => {
-    loadPosters();
-  });
+  document.addEventListener('DOMContentLoaded', loadPosters);
 </script>
 <!-- ======= Fast Loading Blog Section ======= -->
 <section id="featured-blogs" class="featured-blogs">
