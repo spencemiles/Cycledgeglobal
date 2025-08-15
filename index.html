@@ -1239,7 +1239,7 @@
     <div class="promo-content">
       <h1>LAST CHANCE TO UPGRADE YOUR RIDE</h1>
       <h2>With <span>Cycle edge</span> exclusive offers</h2>
-      <a href="https://cycleafricabikes.com/?gad_source=1&gad_campaignid=22199792847&gbraid=0AAAAA-YpPcmr6t7g82V9UaA_PIlPXwyyw&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTqywY0PV3qkD8eIKOe0YkUjadqLrAD_wB6xWLTUy3Rs_Ki9tlLqYswaArukEALw_wcB" class="shop-now-btn">SHOP NOW</a>
+      <a href="shop.html" class="shop-now-btn">SHOP NOW</a>
     </div>
   </div>
 
@@ -1685,7 +1685,7 @@ document.addEventListener('click', function(e) {
     <nav class="mobile-nav-links">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="https://cycleafricabikes.com/?gad_source=1&gad_campaignid=22199792847&gbraid=0AAAAA-YpPcmr6t7g82V9UaA_PIlPXwyyw&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTqywY0PV3qkD8eIKOe0YkUjadqLrAD_wB6xWLTUy3Rs_Ki9tlLqYswaArukEALw_wcB">Shop</a></li>
+        <li><a href="shop.html">Shop</a></li>
         <li><a href="clubs.html">Clubs</a></li>
         <li><a href="repairs.html">Repairs</a></li>
         <li><a href="about.html">About</a></li>
@@ -2169,7 +2169,7 @@ document.addEventListener('click', function(e) {
       <div class="offer-content">
         <h3>CycleEdge Blog</h3>
             <p>Explore inspiration, maintenance and pro cycling insights — all in one place. </p>
-            <a href="https://spencemiles.github.io/Cycledgeglobal/blogs.html" class="shop-now-btn">READ OUR BLOG</a>
+            <a href="blog.html" class="shop-now-btn">READ OUR BLOG</a>
       </div>
     </div>
     
@@ -2201,7 +2201,7 @@ document.addEventListener('click', function(e) {
 
 <!-- Posters Grid -->
 <div class="container posters-container">
-  <h2>Latest  News</h2>
+  <h2>Latest Products</h2>
   <div class="posters-grid" id="posters-grid">
     <!-- Posters will be loaded here from Firebase -->
   </div>
@@ -2213,7 +2213,6 @@ document.addEventListener('click', function(e) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <script type="module">
-  // Import Firebase functions
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
   import { 
     getFirestore, 
@@ -2226,7 +2225,7 @@ document.addEventListener('click', function(e) {
     Timestamp
   } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
-  // Firebase configuration
+  // ✅ Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyBZUWKTUa1VLR4lrtMsDUx28Ru6GFF8u5A",
     authDomain: "cyledgeglobal.firebaseapp.com",
@@ -2236,170 +2235,110 @@ document.addEventListener('click', function(e) {
     appId: "1:895524227881:web:f4c33b0701e77d864c0538"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Function to process images for consistent display
-  function processImage(url, container) {
-    return new Promise((resolve) => {
+  // ✅ Process & preload images for faster rendering
+  function preloadImage(url) {
+    return new Promise((resolve, reject) => {
       const img = new Image();
-      img.onload = function() {
-        const aspectRatio = this.width / this.height;
-        const containerRatio = container.offsetWidth / container.offsetHeight;
-        
-        // Create image container
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'image-container';
-        
-        // Create processed image
-        const processedImg = document.createElement('img');
-        processedImg.className = 'processed-image';
-        processedImg.src = url;
-        
-        // Apply sizing based on aspect ratio
-        if (aspectRatio > containerRatio) {
-          processedImg.style.width = 'auto';
-          processedImg.style.height = '100%';
-        } else {
-          processedImg.style.width = '100%';
-          processedImg.style.height = 'auto';
-        }
-        
-        imageContainer.appendChild(processedImg);
-        resolve(imageContainer);
-      };
       img.src = url;
+      img.onload = () => resolve(url);
+      img.onerror = () => reject(`Image failed to load: ${url}`);
     });
   }
 
-  // Load posters from Firestore (last 8 ads within 30 days)
+  // ✅ Load posters from Firestore
   async function loadPosters() {
+    const slideshow = document.getElementById('slideshow');
+    const postersGrid = document.getElementById('posters-grid');
+
+    slideshow.innerHTML = "<p>Loading ads...</p>";
+    postersGrid.innerHTML = "<p>Loading products...</p>";
+
     try {
-      console.log("Loading posters from Firestore...");
-      
-      // Calculate date 30 days ago
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      
+
       const postersRef = collection(db, "ads");
       const q = query(
-        postersRef, 
+        postersRef,
         where("timestamp", ">=", Timestamp.fromDate(thirtyDaysAgo)),
-        orderBy("timestamp", "desc"), 
+        orderBy("timestamp", "desc"),
         limit(8)
       );
-      
-      const querySnapshot = await getDocs(q);
 
-      const slideshow = document.getElementById('slideshow');
-      const postersGrid = document.getElementById('posters-grid');
-      
-      // Clear existing content
-      slideshow.innerHTML = '';
-      postersGrid.innerHTML = '';
+      const snapshot = await getDocs(q);
 
-      let count = 0;
-      const posters = [];
-
-      // First collect all valid posters
-      querySnapshot.forEach(doc => {
-        const poster = doc.data();
-        if (poster.media && poster.redirectUrl) {
-          posters.push(poster);
-        }
-      });
-
-      // Process slideshow (first 3 posters)
-      for (let i = 0; i < Math.min(3, posters.length); i++) {
-        const poster = posters[i];
-        const slideDiv = document.createElement('div');
-        slideDiv.className = `slide ${i === 0 ? 'active' : ''}`;
-        
-        const processedImage = await processImage(poster.media, slideshow);
-        slideDiv.appendChild(processedImage);
-        
-        const slideContent = document.createElement('div');
-        slideContent.className = 'slide-content';
-        slideContent.innerHTML = `<h3 class="slide-title">${poster.title || 'New Arrival'}</h3>`;
-        slideDiv.appendChild(slideContent);
-        
-        slideshow.appendChild(slideDiv);
-        count++;
+      if (snapshot.empty) {
+        slideshow.innerHTML = "<p>No ads found.</p>";
+        postersGrid.innerHTML = "<p>No products found.</p>";
+        console.warn("Firestore returned no documents.");
+        return;
       }
 
-      // Process grid (all 8 posters)
-      for (const poster of posters) {
-        const posterItem = document.createElement('div');
-        posterItem.className = 'poster-item';
-        
-        const processedGridImage = await processImage(poster.media, {offsetWidth: 250, offsetHeight: 180});
-        posterItem.appendChild(processedGridImage);
-        
-        const posterContent = document.createElement('div');
-        posterContent.className = 'poster-content';
-        
-        // Add price information if available
-        let priceHtml = '';
-        if (poster.price) {
-          priceHtml = `<div class="price-container">
-            <span class="current-price">${poster.price}</span>`;
-          
-          if (poster.originalPrice) {
-            priceHtml += `<span class="original-price">${poster.originalPrice}</span>`;
-          }
-          
-          if (poster.discount) {
-            priceHtml += `<span class="discount-badge">${poster.discount}</span>`;
-          }
-          
-          priceHtml += `</div>`;
-        }
-        
-        posterContent.innerHTML = `
-          <h3 class="poster-title">${poster.title || 'New Product'}</h3>
-          ${priceHtml}
-        `;
-        
-        posterItem.appendChild(posterContent);
-        postersGrid.appendChild(posterItem);
+      const posters = snapshot.docs.map(doc => doc.data()).filter(p => p.media && p.redirectUrl);
+
+      if (posters.length === 0) {
+        slideshow.innerHTML = "<p>No valid posters found.</p>";
+        postersGrid.innerHTML = "<p>No valid products found.</p>";
+        console.warn("No posters with both media and redirectUrl.");
+        return;
       }
 
-      // Initialize slideshow if we have slides
-      if (count > 0) {
-        initSlideshow();
-      }
+      // ✅ Preload all images before displaying
+      await Promise.all(posters.map(p => preloadImage(p.media).catch(err => console.error(err))));
 
-      console.log("Posters loaded successfully");
+      // Slideshow (first 3 posters)
+      slideshow.innerHTML = posters.slice(0, 3).map((poster, i) => `
+        <div class="slide ${i === 0 ? 'active' : ''}">
+          <img src="${poster.media}" alt="${poster.title || 'Ad'}" class="processed-image">
+          <div class="slide-content">
+            <h3>${poster.title || 'New Arrival'}</h3>
+          </div>
+        </div>
+      `).join('');
+
+      // Posters Grid
+      postersGrid.innerHTML = posters.map(poster => `
+        <div class="poster-item">
+          <img src="${poster.media}" alt="${poster.title || 'Product'}" class="processed-image">
+          <div class="poster-content">
+            <h3>${poster.title || 'New Product'}</h3>
+            ${poster.price ? `<div class="price-container">
+              <span class="current-price">${poster.price}</span>
+              ${poster.originalPrice ? `<span class="original-price">${poster.originalPrice}</span>` : ''}
+              ${poster.discount ? `<span class="discount-badge">${poster.discount}</span>` : ''}
+            </div>` : ''}
+          </div>
+        </div>
+      `).join('');
+
+      initSlideshow();
+      console.log("Posters loaded successfully.");
+
     } catch (error) {
-      console.error("Error loading posters:", error);
-      document.getElementById('posters-grid').innerHTML = 
-        '<div class="error-message">Failed to load products</div>';
+      console.error("🔥 Firestore load error:", error);
+      slideshow.innerHTML = "<p style='color:red;'>Failed to load ads.</p>";
+      postersGrid.innerHTML = "<p style='color:red;'>Failed to load products.</p>";
     }
   }
 
-  // Slideshow functionality
+  // ✅ Slideshow rotation
   function initSlideshow() {
     const slides = document.querySelectorAll('.slide');
-    if (slides.length === 0) return;
-    
     let currentSlide = 0;
-    
-    function showSlide(n) {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (n + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }
-    
-    // Auto-advance slides every 5 seconds
+
     setInterval(() => {
-      showSlide(currentSlide + 1);
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
     }, 5000);
   }
 
-  // Initialize when page loads
   document.addEventListener('DOMContentLoaded', loadPosters);
 </script>
+
 <!-- ======= Fast Loading Blog Section ======= -->
 <section id="featured-blogs" class="featured-blogs">
   <div class="container">
