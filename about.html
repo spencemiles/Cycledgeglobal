@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CycleEdge | Africa's Premier Cycling Platform</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTir1y0tFbRCHc4OAB39u9NvM23zlDhrpbe-g&s" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
@@ -132,96 +133,6 @@
       color: #666;
     }
 
-    /* Header Styles */
-    header {
-      background: rgba(30, 39, 46, 0.95);
-      color: white;
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
-
-    header.scrolled {
-      padding: 10px 0;
-      box-shadow: var(--shadow);
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo i {
-      margin-right: 10px;
-      color: var(--accent);
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-
-    nav ul li {
-      margin-left: 30px;
-      position: relative;
-    }
-
-    nav ul li a {
-      color: white;
-      font-weight: 500;
-      transition: var(--transition);
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-    }
-
-    nav ul li a i {
-      margin-right: 5px;
-    }
-
-    nav ul li a:hover {
-      color: var(--accent);
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      bottom: -5px;
-      left: 0;
-      transition: var(--transition);
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 1001;
-    }
 
     /* Hero Section */
     .hero {
@@ -378,6 +289,53 @@
       top: -20px;
       left: -20px;
       z-index: -1;
+    }
+
+    /* Founder Section */
+    .founder {
+      background-color: #f9f9f9;
+      padding: 80px 0;
+    }
+
+    .founder-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .founder-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .founder-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .founder-bio {
+      flex: 1;
+    }
+
+    .founder-bio h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .founder-bio p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .founder-quote {
+      font-style: italic;
+      padding: 20px;
+      background: white;
+      border-left: 4px solid var(--accent);
+      margin: 30px 0;
     }
 
     /* Mission Section */
@@ -1045,6 +1003,14 @@
         margin-top: 40px;
       }
 
+      .founder-container {
+        flex-direction: column;
+      }
+
+      .founder-image {
+        margin-bottom: 30px;
+      }
+
       .timeline::before {
         left: 30px;
       }
@@ -1157,46 +1123,194 @@
 </head>
 <body>
   <!-- Header -->
-  <header id="header">
-    <div class="container header-container">
-      <div class="logo">
-        <i class="fas fa-bicycle"></i>
-        <span>Cycle</span>Edge
-      </div>
-      <nav class="mobile-nav-links">
+<!-- HEADER -->
+<!-- HEADER -->
+<header class="main-header">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="header-logo">Cycle<span>Edge</span></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" id="navbar">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
         <li><a href="repairs.html">Repairs</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </header>
+  </div>
+</header>
+
+<!-- STYLES -->
+<style>
+  /* General Header Styling */
+  .main-header {
+    background: rgb(109, 159, 183);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+
+  .header-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .header-logo span {
+    color: #080808;
+  }
+
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .main-nav ul li a {
+    text-decoration: none;
+    color: #f9f8f8;
+    padding: 8px 12px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .main-nav ul li a:hover {
+    background: #4d8bf0;
+    color: white;
+    border-radius: 5px;
+  }
+
+  /* Hamburger Icon */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hamburger Animation when Active */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .main-nav {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: rgb(214, 236, 245);
+      width: 200px;
+      border-left: 1px solid #eee;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: none;
+      flex-direction: column;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .main-nav.active {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .main-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .main-nav ul li a {
+      padding: 12px 20px;
+      display: block;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<!-- SCRIPT -->
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navbar = document.getElementById("navbar");
+
+  // Toggle menu
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navbar.classList.toggle("active");
+  });
+
+  // Close menu when clicking a link (on mobile)
+  document.querySelectorAll(".main-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navbar.classList.remove("active");
+    });
+  });
+</script>
+
 
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
         <h1>Africa's Premier Cycling Platform</h1>
-        <p>Connecting cyclists, vendors, and enthusiasts across Kenya with quality resources, events, and community support to elevate your riding experience.</p>
+        <p>Connecting cyclists, vendors, and enthusiasts across Africa with quality resources, events, and community support to elevate your riding experience. CycleEdge is your one-stop hub for all things cycling in Africa.</p>
         <div class="hero-btns">
           <a href="#services" class="btn">Explore Services</a>
           <a href="#contact" class="btn btn-outline">Join Community</a>
         </div>
         <div class="stats">
           <div class="stat-item">
-            <div class="stat-number">5K+</div>
+            <div class="stat-number">10K+</div>
             <div class="stat-label">Active Members</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">12+</div>
+            <div class="stat-number">25+</div>
             <div class="stat-label">Events Hosted</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">50+</div>
+            <div class="stat-number">100+</div>
             <div class="stat-label">Local Partners</div>
           </div>
         </div>
@@ -1214,8 +1328,8 @@
       <div class="about-content">
         <div class="about-text">
           <h3>Your Complete Cycling Ecosystem</h3>
-          <p>CycleEdge is a dynamic and innovative cycling platform developed to unite, empower, and elevate the cycling community in Kenya and beyond. Established in early 2024, CycleEdge was created to provide a centralized digital space for cyclists, vendors, tour organizers, and enthusiasts to interact, share resources, access services, and engage with the growing cycling culture in Africa.</p>
-          <p>At its core, CycleEdge brings together everything that matters in the world of cycling—from curated cycling events and guided tours, to gear reviews, exclusive product deals, local vendor support, and global community engagement.</p>
+          <p>CycleEdge is a dynamic and innovative cycling platform developed to unite, empower, and elevate the cycling community across Africa. Established in early 2024, CycleEdge was created to provide a centralized digital space for cyclists, vendors, tour organizers, and enthusiasts to interact, share resources, access services, and engage with the growing cycling culture in Africa.</p>
+          <p>At its core, CycleEdge brings together everything that matters in the world of cycling—from curated cycling events and guided tours, to gear reviews, exclusive product deals, local vendor support, and global community engagement. Our platform serves as a bridge between cycling enthusiasts and the services they need, while promoting cycling as a sustainable mode of transportation, a competitive sport, and a lifestyle choice.</p>
           
           <div class="about-features">
             <div class="feature-item">
@@ -1223,8 +1337,8 @@
                 <i class="fas fa-globe-africa"></i>
               </div>
               <div class="feature-text">
-                <h4>Local Focus</h4>
-                <p>Designed specifically for African cycling conditions and needs</p>
+                <h4>Pan-African Focus</h4>
+                <p>Designed specifically for African cycling conditions and needs across all regions</p>
               </div>
             </div>
             <div class="feature-item">
@@ -1233,7 +1347,7 @@
               </div>
               <div class="feature-text">
                 <h4>Community Driven</h4>
-                <p>Built by cyclists, for cyclists</p>
+                <p>Built by cyclists, for cyclists with continuous community input</p>
               </div>
             </div>
             <div class="feature-item">
@@ -1241,8 +1355,8 @@
                 <i class="fas fa-hand-holding-usd"></i>
               </div>
               <div class="feature-text">
-                <h4>Affordable Access</h4>
-                <p>Quality gear and services at fair prices</p>
+                <h4>Economic Impact</h4>
+                <p>Supporting local cycling businesses and creating jobs</p>
               </div>
             </div>
             <div class="feature-item">
@@ -1250,8 +1364,8 @@
                 <i class="fas fa-shield-alt"></i>
               </div>
               <div class="feature-text">
-                <h4>Safety First</h4>
-                <p>Promoting safe riding practices</p>
+                <h4>Safety & Education</h4>
+                <p>Promoting safe riding practices and cycling education</p>
               </div>
             </div>
           </div>
@@ -1259,6 +1373,24 @@
         <div class="about-image">
           <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="CycleEdge Community">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Section -->
+  <section class="section founder">
+    <div class="container founder-container">
+      <div class="founder-image">
+        <img src="https://iili.io/FR089Bp.md.jpg" alt="Philemon Mutisya - Founder of CycleEdge">
+      </div>
+      <div class="founder-bio">
+        <h3>Meet Our Founder: Philemon Mutisya</h3>
+        <p>CycleEdge was founded by Philemon Mutisya, a passionate cyclist and tech entrepreneur who recognized the need for a unified platform to serve Africa's growing cycling community. As an active member of the local cycling scene, Philemon has seen firsthand the challenges faced by cyclists and cycling businesses.</p>
+        <p>His vision was to create a digital ecosystem that would connect all aspects of the cycling world - from professional riders to weekend enthusiasts, from small bike shops to major manufacturers. What began as a simple idea to help local cyclists find group rides has grown into Africa's most comprehensive cycling platform.</p>
+        <div class="founder-quote">
+          "Cycling transformed my life, and I wanted to create something that would make cycling more accessible, safer, and more rewarding for everyone across Africa. CycleEdge is more than a business - it's a movement to put Africa on the global cycling map."
+        </div>
+        <p>Under Philemon's leadership, CycleEdge has grown from a small Nairobi-based startup to a pan-African platform serving cyclists in 12 countries. His unique combination of cycling expertise and tech innovation continues to drive the company's vision forward.</p>
       </div>
     </div>
   </section>
@@ -1274,17 +1406,17 @@
         <div class="mission-card">
           <i class="fas fa-bullseye"></i>
           <h3>Our Mission</h3>
-          <p>To empower every cyclist in Africa with the tools, resources, and community they need to thrive. We believe cycling can transform lives—through improved health, eco-friendly transport, and community empowerment.</p>
+          <p>To empower every cyclist in Africa with the tools, resources, and community they need to thrive. We believe cycling can transform lives—through improved health, eco-friendly transport, and community empowerment. Our mission is to break down barriers to cycling access across the continent.</p>
         </div>
         <div class="mission-card">
           <i class="fas fa-eye"></i>
           <h3>Our Vision</h3>
-          <p>To become Africa's most trusted and vibrant online cycling hub—where cyclists of all levels can connect, discover, and grow, while driving social, economic, and environmental impact through two wheels.</p>
+          <p>To become Africa's most trusted and vibrant online cycling hub—where cyclists of all levels can connect, discover, and grow, while driving social, economic, and environmental impact through two wheels. We envision a future where cycling is a mainstream transportation and lifestyle choice across Africa.</p>
         </div>
         <div class="mission-card">
           <i class="fas fa-flag-checkered"></i>
           <h3>Our Direction</h3>
-          <p>We're growing into an all-in-one platform to connect African cyclists globally, promote local businesses, educate riders, sustain cycling culture, and engage youth through clubs and sponsorships.</p>
+          <p>We're growing into an all-in-one platform to connect African cyclists globally, promote local businesses, educate riders, sustain cycling culture, and engage youth through clubs and sponsorships. Our roadmap includes expanding to 30 African countries by 2026 and launching a cycling academy in 2025.</p>
         </div>
       </div>
     </div>
@@ -1304,7 +1436,7 @@
           </div>
           <div class="service-content">
             <h3>Event Promotion</h3>
-            <p>We list and promote both local and international cycling events. Whether you're looking for a weekend race in Nairobi or a long-distance tour across the coast, our platform is your go-to guide.</p>
+            <p>We list and promote both local and international cycling events across Africa. Whether you're looking for a weekend race in Nairobi, a mountain biking challenge in Cape Town, or a long-distance tour across the continent, our platform is your comprehensive guide. Event organizers can list their events for free, while premium promotion packages help reach targeted audiences.</p>
             <a href="#" class="btn btn-accent">Find Events</a>
           </div>
         </div>
@@ -1314,7 +1446,7 @@
           </div>
           <div class="service-content">
             <h3>Bike Marketplace</h3>
-            <p>CycleEdge supports local shops by giving them a digital storefront. Users can buy, rent, or repair bikes, order accessories, or browse gear from trusted vendors across Kenya.</p>
+            <p>CycleEdge supports local shops and individual sellers by giving them a digital storefront with secure payment processing. Users can buy, rent, or repair bikes, order accessories, or browse gear from trusted vendors across Africa. Our verification system ensures quality while our logistics partners help with delivery across major cities. Vendors benefit from increased visibility and streamlined operations.</p>
             <a href="#" class="btn btn-accent">Shop Now</a>
           </div>
         </div>
@@ -1324,7 +1456,7 @@
           </div>
           <div class="service-content">
             <h3>Cycling Adventures</h3>
-            <p>We actively promote cycling tours across scenic landscapes, helping users discover new routes while supporting local guides and eco-tourism efforts throughout Kenya.</p>
+            <p>We actively promote cycling tours across Africa's most scenic landscapes, helping users discover new routes while supporting local guides and eco-tourism efforts. From one-day excursions to week-long expeditions, we connect riders with certified tour operators. Our adventure packages include bike rentals, support vehicles, accommodations, and curated experiences that showcase local culture and nature.</p>
             <a href="#" class="btn btn-accent">Explore Tours</a>
           </div>
         </div>
@@ -1344,35 +1476,35 @@
           <div class="timeline-content">
             <div class="timeline-date">2024 Q1</div>
             <h3>Platform Launch</h3>
-            <p>Successfully launched the CycleEdge platform with initial partnerships with 5 local bike shops and 3 cycling clubs in Nairobi.</p>
+            <p>Successfully launched the CycleEdge platform with initial partnerships with 5 local bike shops and 3 cycling clubs in Nairobi. Our beta version attracted 1,000 users in the first month, validating the need for a unified cycling platform in Africa.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-date">2024 Q2</div>
             <h3>First Major Event</h3>
-            <p>Hosted the Nairobi Challenge with over 200 participants, marking our first major cycling event promotion.</p>
+            <p>Hosted the Nairobi Challenge with over 200 participants, marking our first major cycling event promotion. The success of this event led to partnerships with 15 additional cycling clubs across Kenya and Tanzania.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-date">2024 Q3</div>
             <h3>5,000 Users</h3>
-            <p>Reached our first major milestone of 5,000 active users across Kenya within just 6 months of operation.</p>
+            <p>Reached our first major milestone of 5,000 active users across Kenya within just 6 months of operation. Launched our vendor marketplace feature, enabling 50+ local bike shops and mechanics to list their services online.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-date">2024 Q4</div>
-            <h3>Vendor Expansion</h3>
-            <p>Supported 50+ local vendors and mechanics, allowing them to list services and products online, expanding their reach.</p>
+            <h3>Regional Expansion</h3>
+            <p>Expanded operations to Uganda, Rwanda, and South Africa, growing our user base to 10,000+ cyclists. Partnered with 12 major cycling events across East Africa, becoming the official registration and promotion platform.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-date">2025 Q1</div>
             <h3>Brand Partnerships</h3>
-            <p>Created exclusive deals with international brands to provide cycling gear and bikes at subsidized costs for our community.</p>
+            <p>Created exclusive deals with international brands to provide cycling gear and bikes at subsidized costs for our community. Launched our mobile app with route tracking, event notifications, and in-app messaging features.</p>
           </div>
         </div>
       </div>
@@ -1446,7 +1578,7 @@
         <div class="testimonial-track" id="testimonialTrack">
           <div class="testimonial-card">
             <div class="testimonial-content">
-              <p class="testimonial-text">"CycleEdge completely transformed my cycling experience. I found my current riding group through their platform, and we've been exploring new routes every weekend. The vendor marketplace helped me upgrade my bike at an affordable price."</p>
+              <p class="testimonial-text">"CycleEdge completely transformed my cycling experience. I found my current riding group through their platform, and we've been exploring new routes every weekend. The vendor marketplace helped me upgrade my bike at an affordable price from a local shop I wouldn't have discovered otherwise. The event calendar keeps me informed about races and group rides in my area."</p>
               <div class="testimonial-author">
                 <div class="author-avatar">
                   <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James K.">
@@ -1460,28 +1592,28 @@
           </div>
           <div class="testimonial-card">
             <div class="testimonial-content">
-              <p class="testimonial-text">"As a small bike shop owner, CycleEdge has brought me more customers than I could imagine. The platform is easy to use and has helped me reach cyclists across Kenya. My business has grown by 40% since joining."</p>
+              <p class="testimonial-text">"As a small bike shop owner in Kampala, CycleEdge has brought me more customers than I could imagine. The platform is easy to use and has helped me reach cyclists across East Africa. My business has grown by 40% since joining, and I've been able to hire two more mechanics. The vendor support team helped me optimize my listings and understand digital marketing basics."</p>
               <div class="testimonial-author">
                 <div class="author-avatar">
                   <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah W.">
                 </div>
                 <div class="author-info">
                   <h4>Sarah W.</h4>
-                  <p>Bike Shop Owner, Mombasa</p>
+                  <p>Bike Shop Owner, Kampala</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-content">
-              <p class="testimonial-text">"The cycling tours organized through CycleEdge are incredible. I've discovered parts of Kenya I never knew existed. The guides are professional and the routes are well-planned. Highly recommend for any cycling enthusiast!"</p>
+              <p class="testimonial-text">"The cycling tours organized through CycleEdge are incredible. I've discovered parts of Kenya I never knew existed. The guides are professional and the routes are well-planned. As an event organizer, the platform has simplified our registration process and helped us double participation in our annual charity ride. The analytics tools provide valuable insights about our participants."</p>
               <div class="testimonial-author">
                 <div class="author-avatar">
                   <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David M.">
                 </div>
                 <div class="author-info">
                   <h4>David M.</h4>
-                  <p>Adventure Cyclist, Nakuru</p>
+                  <p>Event Organizer, Nakuru</p>
                 </div>
               </div>
             </div>
@@ -1496,6 +1628,19 @@
     </div>
   </section>
 
+  <!-- CTA Section -->
+  <section class="section cta" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Join Our Cycling Community</h2>
+        <p>Be part of Africa's fastest growing cycling movement</p>
+      </div>
+      <form class="cta-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Get Started</button>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -1503,7 +1648,7 @@
       <div class="footer-container">
         <div class="footer-col">
           <h3>About CycleEdge</h3>
-          <p>Africa's premier cycling platform connecting riders, vendors, and enthusiasts since 2024.</p>
+          <p>Africa's premier cycling platform connecting riders, vendors, and enthusiasts since 2024. Our mission is to grow and support cycling culture across the continent through technology and community.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1626,19 +1771,6 @@
     timelineItems.forEach(item => {
       timelineObserver.observe(item);
     });
-
-    // Scroll Reveal Animation
-    const animateOnScroll = (elements, className) => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(className);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      elements.forEach(element => observer.observe(element));
-    };
 
     // Event Widget (Example of additional functionality)
     const upcomingEvents = [
