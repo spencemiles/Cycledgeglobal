@@ -2214,18 +2214,18 @@ document.addEventListener('click', function(e) {
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-  import { 
-    getFirestore, 
-    collection, 
-    getDocs, 
-    query, 
-    orderBy, 
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy,
     limit,
     where,
     Timestamp
   } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
-  // ✅ Firebase config
+  // Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyBZUWKTUa1VLR4lrtMsDUx28Ru6GFF8u5A",
     authDomain: "cyledgeglobal.firebaseapp.com",
@@ -2238,113 +2238,175 @@ document.addEventListener('click', function(e) {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // ✅ Preload images
+  const CACHE_KEY = "adsCache_v1";
+  const MAX_ADS = 8;
+
+  // Preload (no resize)
   function preloadImage(url) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
       img.src = url;
-      img.onload = () => resolve(url);
-      img.onerror = () => reject(`Image failed: ${url}`);
+      // No width/height set => natural size preserved
     });
   }
 
-  // ✅ Render cached data instantly
-  function renderFromCache() {
-    const cached = localStorage.getItem('adsCache');
-    if (!cached) return false;
-    try {
-      const posters = JSON.parse(cached);
-      renderUI(posters);
-      console.log("Loaded ads from cache");
-      return true;
-    } catch (err) {
-      console.warn("Cache error:", err);
-      return false;
-    }
-  }
+  // Render slideshow + grid (no forced sizing)
+  function renderUI(items) {
+    const slideshow = document.getElementById("slideshow");
+    const grid = document.getElementById("posters-grid");
 
-  // ✅ Render UI (slideshow + grid)
-  function renderUI(posters) {
-    const slideshow = document.getElementById('slideshow');
-    const postersGrid = document.getElementById('posters-grid');
-
-    // Slideshow
-    slideshow.innerHTML = posters.slice(0, 3).map((poster, i) => `
-      <div class="slide ${i === 0 ? 'active' : ''}">
-        <img src="${poster.media}" alt="${poster.title || 'Ad'}">
+    // Slideshow: first 3
+    slideshow.innerHTML = items.slice(0, 3).map((p, i) => `
+      <div class="slide ${i === 0 ? "active" : ""}">
+        <a href="${p.redirectUrl}" target="_blank" rel="noopener">
+          <img src="${p.media}" alt="${p.title || "Ad"}" loading="eager" decoding="async">
+        </a>
         <div class="slide-content">
-          <h3>${poster.title || 'New Arrival'}</h3>
+          <h3>${p.title || "New Arrival"}</h3>
         </div>
       </div>
-    `).join('');
+    `).join("");
 
-    // Grid
-    postersGrid.innerHTML = posters.map(poster => `
+    // Grid: all
+    grid.innerHTML = items.map(p => `
       <div class="poster-item">
-        <img src="${poster.media}" alt="${poster.title || 'Product'}">
+        <a href="${p.redirectUrl}" target="_blank" rel="noopener">
+          <img src="${p.media}" alt="${p.title || "Product"}" loading="lazy" decoding="async">
+        </a>
         <div class="poster-content">
-          <h3>${poster.title || 'New Product'}</h3>
-          ${poster.price ? `<div class="price-container">
-            <span class="current-price">${poster.price}</span>
-            ${poster.originalPrice ? `<span class="original-price">${poster.originalPrice}</span>` : ''}
-            ${poster.discount ? `<span class="discount-badge">${poster.discount}</span>` : ''}
-          </div>` : ''}
+          <h3>${p.title || "New Product"}</h3>
+          ${p.price ? `
+            <div class="price-container">
+              <span class="current-price">${p.price}</span>
+              ${p.originalPrice ? `<span class="original-price">${p.originalPrice}</span>` : ""}
+              ${p.discount ? `<span class="discount-badge">${p.discount}</span>` : ""}
+            </div>` : ""}
         </div>
       </div>
-    `).join('');
+    `).join("");
 
     initSlideshow();
   }
 
-  // ✅ Load from Firestore and update cache
-  async function loadPostersFresh() {
-    try {
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-      const postersRef = collection(db, "ads");
-      const q = query(
-        postersRef,
-        where("timestamp", ">=", Timestamp.fromDate(thirtyDaysAgo)),
-        orderBy("timestamp", "desc"),
-        limit(8)
-      );
-
-      const snapshot = await getDocs(q);
-      const posters = snapshot.docs.map(doc => doc.data())
-        .filter(p => p.media && p.redirectUrl);
-
-      if (posters.length > 0) {
-        await Promise.all(posters.map(p => preloadImage(p.media).catch(() => {})));
-        localStorage.setItem('adsCache', JSON.stringify(posters));
-        renderUI(posters);
-        console.log("Fresh ads loaded & cached");
-      }
-    } catch (error) {
-      console.error("Firestore load error:", error);
-    }
-  }
-
-  // ✅ Slideshow rotation
   function initSlideshow() {
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
+    const slides = document.querySelectorAll("#slideshow .slide");
+    if (slides.length <= 1) return;
+    let i = 0;
     setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
+      slides[i].classList.remove("active");
+      i = (i + 1) % slides.length;
+      slides[i].classList.add("active");
     }, 5000);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const hadCache = renderFromCache();
-    loadPostersFresh();
-    if (!hadCache) {
-      document.getElementById('slideshow').innerHTML = "<p>Loading ads...</p>";
-      document.getElementById('posters-grid').innerHTML = "<p>Loading products...</p>";
+  // Try 30-day filter; if index error, fall back to simple orderBy
+  async function fetchFresh() {
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+    const baseRef = collection(db, "ads");
+
+    const qWithFilter = query(
+      baseRef,
+      where("timestamp", ">=", Timestamp.fromDate(thirtyDaysAgo)),
+      orderBy("timestamp", "desc"),
+      limit(MAX_ADS)
+    );
+
+    try {
+      const snap = await getDocs(qWithFilter);
+      return snap.docs.map(d => d.data()).filter(p => p.media && p.redirectUrl);
+    } catch (e) {
+      console.warn("Query with 30-day filter failed (index or rules). Falling back to orderBy only.", e);
+      const qSimple = query(baseRef, orderBy("timestamp", "desc"), limit(MAX_ADS));
+      const snap2 = await getDocs(qSimple);
+      return snap2.docs.map(d => d.data()).filter(p => p.media && p.redirectUrl);
     }
-  });
+  }
+
+  async function loadAds() {
+    const slideshow = document.getElementById("slideshow");
+    const grid = document.getElementById("posters-grid");
+
+    // 1) Instant from cache (if present)
+    let hadCache = false;
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      try {
+        const items = JSON.parse(cached);
+        if (Array.isArray(items) && items.length) {
+          renderUI(items);
+          hadCache = true;
+        }
+      } catch {}
+    }
+
+    if (!hadCache) {
+      slideshow.innerHTML = "<p>Loading ads...</p>";
+      grid.innerHTML = "<p>Loading products...</p>";
+    }
+
+    // 2) Fresh fetch in background, then replace UI + update cache
+    try {
+      const fresh = await fetchFresh();
+      if (fresh.length) {
+        // Preload images but do NOT set sizes — preserve natural dimensions
+        await Promise.all(fresh.map(p => preloadImage(p.media)));
+        localStorage.setItem(CACHE_KEY, JSON.stringify(fresh));
+        renderUI(fresh);
+      } else if (!hadCache) {
+        slideshow.innerHTML = "<p>No ads found.</p>";
+        grid.innerHTML = "<p>No products found.</p>";
+      }
+    } catch (err) {
+      console.error("Firestore load error:", err);
+      if (!hadCache) {
+        slideshow.innerHTML = "<p style='color:red'>Failed to load ads.</p>";
+        grid.innerHTML = "<p style='color:red'>Failed to load products.</p>";
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadAds);
 </script>
+
+<!-- Natural-size friendly CSS (no forced width/height) -->
+<style>
+  /* Slideshow container */
+  #slideshow { position: relative; overflow: hidden; }
+
+  /* Slides: we don't fix sizes; we just toggle visibility */
+  #slideshow .slide { display: none; }
+  #slideshow .slide.active { display: block; }
+
+  /* Natural image sizing: no scaling unless too big for viewport/container */
+  #slideshow img,
+  #posters-grid img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;       /* prevent overflow horizontally */
+    max-height: 80vh;      /* prevent overflow vertically in slideshow */
+    object-fit: contain;   /* keep entire image visible if container smaller */
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Grid layout without forcing image dimensions */
+  #posters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .poster-item { padding: 8px; border: 1px solid #eee; border-radius: 12px; }
+  .poster-content h3 { margin: 8px 0 0; font-size: 0.95rem; }
+
+  /* If you previously had classes like .processed-image or .image-container
+     that force width/height: remove them OR let these overrides win. */
+</style>
+
 
 
 <!-- ======= Fast Loading Blog Section ======= -->
